@@ -20,7 +20,8 @@
                             <input type="text" name="last_name" id="last_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid last name" required="required">
                         </p>
                         <p><label for="dob">Date of Birth</label>
-                            <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="[0-24]/[1-12]/\d{4}" title="Enter a valid date">
+                            <!--fix date pattern-->
+                            <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="[0-31]/[1-12]/\d{4}" title="Enter a valid date">
                         </p>
                         <fieldset>
                             <legend>Gender</legend>
@@ -78,6 +79,8 @@
                             <input type="text" name="phone_number" id="phone_number" pattern=".{8,12}" required="required">
                         </p>
                 </fieldset>
+                <input type="submit" value="Apply">
+                <input type="reset" value="Reset form">
                 </form>
             </main>
     </body>
