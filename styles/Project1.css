@@ -16,3 +16,61 @@ h1{background-color: salmon;}
 html{
     background-color: bisque;   
 }
+
+#about_body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+  }
+  #about_header {
+    background: linear-gradient(90deg, #1f3b6e, #612f74);
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  #nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    align-items: center;
+  }
+  #nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  .intro {
+    background-color: #6b539b;
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .leadership {
+    padding: 40px;
+    text-align: center;
+  }
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .team-member {
+    width: 250px;
+  }
+  .team-member img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .team-member h3 {
+    margin: 10px 0 5px 0;
+  }
+  .team-member p {
+    font-size: 14px;
+    color: #555;
+  }
+  #infinte_loop{
+    color:#d346a2;
+  }
+  #cloudspire{color:#df46a2;}

@@ -7,7 +7,7 @@
         <meta name="keywords" content="HTML5, information technology, IT, company, cloudspire,">
         <meta name="author" content="InfinteLoops">
         <link rel="stylesheet" type="text/css" href="styles/Project1.css">
-        <title>CloudSpire Technologies - step towards your new life</title>
+        <title>CloudSpire Technologies | step towards your new life</title>
     </head>
     <body>
         <header>
@@ -30,7 +30,6 @@
                         <input type="text" name="last_name" id="last_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid last name" required="required">
                     </p>
                     <p><label for="dob">Date of Birth</label>
-                        <!--fix date pattern-->
                         <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Enter a valid date">
                     </p>
                     <fieldset id="gender">
@@ -76,12 +75,10 @@
                         </select>
                     </p>
                     <label for ="postcode">Postcode</label>
-                    <!--post code based on states?-->
                     <input type="text" name="postcode" id="postcode" pattern="\d{4}" title="Please enter a valid Postcode" required="required">
                 </div>
                 <div>
                     <h2>Contact Details</h2>
-                    <!--check these fields-->
                     <label for ="email_address">Email Address</label>
                     <input type="email" name="email_address" id="email_address" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required="required">
                     <p>
@@ -89,8 +86,7 @@
                         <input type="text" name="phone_number" id="phone_number" pattern=".{8,12}" required="required">
                     </p>
                 </div>
-                <label for="other_skills">Other Skills</label>
-                <br>
+                <label for="other_skills"><h2>Other Skills</h2></label>
                 <textarea name="other_skills" id="other_skills" rows="5" cols="40"></textarea>
                 <br>
                 <input type="submit" value="Apply">
