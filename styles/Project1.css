@@ -74,3 +74,23 @@ html{
     color:#d346a2;
   }
   #cloudspire{color:#df46a2;}
+
+  aside{
+    border: 4px inset purple;
+    border-radius: 14px;
+    margin: 1em;
+    padding: 1em;
+    background: url(images/fade.jpg) repeat-x top left;
+    width: 30%;
+    float: right;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+aside:hover{display: block;}
+image{
+    width: 60%;
+    height: auto;
+    margin: 15px;
+
+  
+    border-radius: 5px;
+}
