@@ -1,6 +1,9 @@
 nav ul li{display: inline-block;}
 nav{float: right;}
-h1{float: left;}
+#page_title{
+    float: left;
+    color: rgb(79, 252, 136);
+}
 #form_body{clear: both;}
 .menu{
     display: flex;
@@ -9,13 +12,13 @@ h1{float: left;}
     padding: 10px 40px;
     border-radius: 4px;
     font-size: 20px;
+    color: rgb(79, 252, 136);;
 }
 .menu:hover{
     color: black;
-    background-color: rgb(31, 134, 31);
-    border-color: rgb(9, 175, 134);
+    background-color: rgb(9, 175, 134);
 }
-h1{background-color: salmon;}
+
 html{
     background-color: bisque;   
 }
@@ -48,7 +51,7 @@ html{
     padding: 60px 40px;
     text-align: center;
 }
-  .leadership {
+.leadership {
     padding: 40px;
     text-align: center;
 }

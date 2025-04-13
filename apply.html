@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-            <h1>CloudSpire Technologies</h1>
+            <h1 id="page_title">CloudSpire Technologies</h1>
             <nav>
                 <ul>
                     <li><a class="menu" href="index.html">Home</a></li>
@@ -83,11 +83,49 @@
                     <input type="email" name="email_address" id="email_address" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required="required">
                     <p>
                         <label for ="phone_number">Phone Number</label>
-                        <input type="text" name="phone_number" id="phone_number" pattern=".{8,12}" required="required">
+                        <input type="text" name="phone_number" id="phone_number" pattern="(\d\s?){8,12}" required="required">
                     </p>
                 </div>
-                <label for="other_skills"><h2>Other Skills</h2></label>
-                <textarea name="other_skills" id="other_skills" rows="5" cols="40"></textarea>
+                <div>
+                    <h2>Job Details</h2>
+                    <label for="job_ref_no"><h3>Job Position</h3></label>
+                    <select name="job_ref_no" id="job_ref_no" required="required">
+                        <option value="">Please select your preffered Position</option>
+                        <option value="css-2025-21">Cyber Security Specialist(CSS-2025-21)</option>
+                        <option value="eha-2025-86">Ethical Hacker(EHA-2025-86)</option>
+                        <option value="cfa-2025-63">Computer Forensic Analyst(CFA-2025-63)</option>
+                        <option value="ise-2025-26">IT Security Engineer(ISE-2025-26)</option>
+                    </select>
+                    <br>
+                    <!--this list was generated using chatGPT-->
+                    <h3>Select the Technical Skills you're Familiar with:</h3>
+                    <input type="checkbox" id="wireshark" name="skills" value="wireshark" checked>
+                    <label for="wireshark"><strong>Wireshark</strong> - Analyze and inspect network traffic</label><br>
+                    <input type="checkbox" id="nmap" name="skills" value="nmap">
+                    <label for="nmap"><strong>Nmap</strong> - Scan networks and detect open ports</label><br>
+                    <input type="checkbox" id="burp" name="skills" value="burp_suite">
+                    <label for="burp"><strong>Burp Suite</strong> - Test for web application vulnerabilities</label><br>
+                    <input type="checkbox" id="linux" name="skills" value="basic_linux">
+                    <label for="linux"><strong>Basic Linux Commands</strong> - Navigation, permissions, user management</label><br>
+                    <input type="checkbox" id="win_security" name="skills" value="win_security_basics">
+                    <label for="win_security"><strong>Windows Security Basics</strong> - File permissions, user roles, AD overview</label><br>
+                    <input type="checkbox" id="basic_networking" name="skills" value="basic_networking">
+                    <label for="basic_networking"><strong>Basic Networking</strong> - Understand TCP/IP, DNS, ports, VPN</label><br>
+                    <input type="checkbox" id="firewall" name="skills" value="firewall_rules">
+                    <label for="firewall"><strong>Firewall Rules & Access Control</strong> - Basic concepts of traffic contro</label><br>
+                    <input type="checkbox" id="siem" name="skills" value="siem_tools">
+                    <label for="siem"><strong>SIEM Tools (e.g.,splunk)</strong> - Basic log searching and alerting</label><br>
+                    <input type="checkbox" id="owasp" name="skills" value="owasp_awareness">
+                    <label for="owasp"><strong>OWASP Top 10 Awareness</strong> - Common web security issues</label><br>
+                    <input type="checkbox" id="irs" name="skills" value="incident_response_steps">
+                    <label for="irs"><strong>Incident Response Steps</strong> - Know the phases of handling a security event</label><br>
+                    <input type="checkbox" id="cloud" name="skills" value="cloud_security_fundamentals">
+                    <label for="cloud"><strong>Cloud Security Fundamentals</strong> - Understand AWS/Azure basic security controls</label><br>
+                    <input type="checkbox" id="python" name="skills" value="python_powershell_scripting">
+                    <label for="python"><strong>Python or PowerShell Scripting</strong> - Write simple automation scripts</label><br>
+                    <label for="other_skills"><h3>Other Skills</h3></label>
+                    <textarea name="other_skills" id="other_skills" rows="5" cols="40"></textarea>
+                </div>
                 <br>
                 <input type="submit" value="Apply">
                 <input type="reset" value="Reset form">
