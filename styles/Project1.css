@@ -20,7 +20,7 @@ nav{float: right;}
 }
 
 html{
-    background-color: bisque;   
+    background-color: #1d1f34;   
 }
 
 #about_body {
@@ -102,13 +102,13 @@ html{
 header{
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(90deg, #1f3b6e, #612f74);
+    background: linear-gradient( #6b539b);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: bisque;
+    background-color:#1d1f34 ;
     color: #333;
     padding: 0;
     margin: 0;
@@ -239,8 +239,8 @@ a[href*="apply.html"]:hover {
 
 /* Footer */
 footer {
-    background-color: #0c007b;
-    color: #1b1212;
+    background-color: #6b539b;
+    color: #e6dbdb;
     text-align: center;
     padding: 15px;
     font-size: 1.1rem;
