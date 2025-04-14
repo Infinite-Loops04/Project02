@@ -134,6 +134,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
     background: linear-gradient(90deg, #1f3b6e, #6b539b); /* Gradient background */
     color: white;
     padding: 20px 40px;
@@ -165,7 +166,7 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
     margin-top: 10px;
     display: block;
     display: inline-block;
