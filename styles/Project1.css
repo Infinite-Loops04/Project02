@@ -1,0 +1,114 @@
+nav ul li{display: inline-block;}
+nav{float: right;}
+#page_title{
+    float: left;
+    color: rgb(79, 252, 136);
+}
+#form_body{clear: both;}
+.menu{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 10px 40px;
+    border-radius: 4px;
+    font-size: 20px;
+    color: rgb(79, 252, 136);;
+}
+.menu:hover{
+    color: black;
+    background-color: rgb(9, 175, 134);
+}
+
+html{
+    background-color: bisque;   
+}
+
+#about_body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+  }
+#about_header {
+    background: linear-gradient(90deg, #1f3b6e, #612f74);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+#nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    align-items: center;
+}
+#nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+#intro {
+    background-color: #6b539b;
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+}
+.leadership {
+    padding: 40px;
+    text-align: center;
+}
+#team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.team-member {
+    width: 250px;
+}
+.team-member img {
+    width: 100%;
+    border-radius: 10px;
+}
+.team-member h3 {
+    margin: 10px 0 5px 0;
+}
+.team-member p {
+    font-size: 14px;
+    color: #555;
+}
+#infinte_loop{
+    color:#d346a2;
+}
+#cloudspire{color:#df46a2;}
+
+  aside{
+    border: 4px inset purple;
+    border-radius: 14px;
+    margin: 1em;
+    padding: 1em;
+    background: url(images/fade.jpg) repeat-x top left;
+    width: 30%;
+    float: right;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+aside:hover{display: block;}
+image{
+    width: 60%;
+    height: auto;
+    margin: 15px;
+
+  
+    border-radius: 5px;
+}
+
+#welcome{
+    max-width: 700px;
+    margin: 0 auto;
+}
+#follow_us{float: right;}
+#copyright{float: left;}
+header{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #1f3b6e, #612f74);
+}
