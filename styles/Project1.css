@@ -1,4 +1,8 @@
-nav ul li{display: inline-block;}
+
+#welcome h1 {
+    color: #1a73e8;
+    margin-bottom: 10px;
+}nav ul li{display: inline-block;}
 nav{float: right;}
 #page_title{
     float: left;
@@ -102,7 +106,8 @@ html{
 header{
     display: flex;
     justify-content: space-between;
-    background: linear-gradient( #6b539b);
+    background: #6b539b; /* Gradient background */
+    color: white;
 }
 
 body {
@@ -124,7 +129,7 @@ a:hover {
 }
 
 header {
-    background-color: #1a73e8;
+    background-color: #6b539b;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -142,7 +147,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(90deg, #1f3b6e, #612f74); /* Gradient background */
     color: white;
     padding: 20px 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -299,8 +303,4 @@ a.apply-now:hover {
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
    
-}
-#welcome h1 {
-    color: #1a73e8;
-    margin-bottom: 10px;
 }
