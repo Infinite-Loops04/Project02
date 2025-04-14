@@ -12,7 +12,8 @@ nav{float: right;}
     padding: 10px 40px;
     border-radius: 4px;
     font-size: 20px;
-    color: rgb(79, 252, 136);;
+    color: rgb(79, 252, 136);
+    background: url(images/image.png);
 }
 .menu:hover{
     color: black;
