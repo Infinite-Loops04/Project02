@@ -1,77 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device_width, height=device_height">
-        <meta name="description" content="Team behind CloudSpire Technologies">
-        <meta name="keywords" content="HTML5, information technology, IT, company, cloudspire,">
-        <meta name="author" content="InfinteLoops">
-        <link rel="stylesheet" type="text/css" href="styles/Project1.css">
-        <title>Meet the Team behind CloudSpire</title>
-    </head>
-    <body id="about_body">
-        <header id ="about_header">
-          <div id="nav">
-            <div>
-              <strong>Cloudspire Technologies</strong>
-            </div>
-            <div>
-              <a href="#">Home</a>
-              <a href="#">Jobs</a>
-              <a href="#">Contact Us</a>
-              <a href="#">About Us</a>
-            </div>
-          </div>
-        </header>
-        <section id="intro">
-          <h1>We Are <span id="cloudspire">Cloudspire</span></h1>
-          <p>Providing you the gateway to your next big gig.</p>
-          <p id="welcome">
-              Welcome to Cloudspire, your ultimate destination for IT career advancement. We are a dedicated platform designed to connect innovative IT professionals with top-tier job opportunities through our partnership with Infinite Loops. Our mission is to empower tech enthusiasts to navigate their career paths with ease, by providing a user-friendly hub that features diverse job listings, valuable resources, and a supportive community. At Cloudspire, we believe in fostering talent and facilitating meaningful connections in the ever-evolving world of technology. Join us on your journey towards your next great gig!
-          </p>
-        </section>
-        <section class="Infinite Loops">
-          <h2> Meet the <span id="infinite_loops">Infinite Loops</span></h2>
-          <div id="team-grid">
-            <div class="team-member">
-              <img src="https://via.placeholder.com/250x250" alt="Ishita" />
-              <h3>Ishita</h3>
-              <p>Project Lead</p>
-              <p>Leads daily operations and is passionate about people, sports, and efficient processes.</p>
-            </div>
-            <div class="team-member">
-              <img src="https://via.placeholder.com/250x250" alt="Manroop" />
-              <h3>Manroop</h3>
-              <p>Role</p>
-              <p>facts</p>
-            </div>
-            <div class="team-member">
-              <img src="https://via.placeholder.com/250x250" alt="Viresh" />
-              <h3>Viresh</h3>
-              <p>Role</p>
-              <p>facts</p>
-            </div>
-            <div class="team-member">
-              <img src="https://via.placeholder.com/250x250" alt="Zainab" />
-              <h3>Zainab</h3>
-              <p>Role</p>
-              <p>facts</p>
-            </div>
-          </div>
-        </section>
-        <section id="about_cloudspire">
-         <h2> A brief insight to our journey and the creation on this website </h2>
-         <p> Cloudspire is an innovative web development project crafted by our dedicated team, Infinite Loops, under the guidance of Mr. Rahul. Our team comprises four talented individuals: Ishita, Viresh, Manroop, and Zainab, each contributing their unique skills to ensure a seamless collaboration. Ishita, serving as the project lead, has been key in initiating team discussions and fostering accountability, while also enhancing the visual aesthetics and developing the jobs.html page. Manroop, proficient in CSS, has focused on creating an engaging style.css and made significant contributions to the apply.html page, along with managing project pages on GitHub and Jira for effective teamwork. Viresh has laid the groundwork by creating a comprehensive blueprint of the project requirements, leading the development of the index.html page, and drafting the group agreement template. Lastly, Zainab has led the organization of scrum sprints and timelines on Jira, designed the logo for our website, and developed the about.html page. Together, our team has worked collaboratively to bring Cloudspire to life, showcasing our commitment to excellence and innovation in web development.</p>
-         <img src="https://via.placeholder.com/250x250" alt="Group Photo" />
-        </section>
-        <hr>
-        <footer>
-            <p id="copyright">&copy; 2023 CloudSpire Technologies. All rights reserved.</p>
-            <p id="follow_us">Follow us on:
-                <a href="https://www.facebook.com/cloudspiretech">Facebook</a> |
-                <a href="https://www.twitter.com/cloudspiretech">Twitter</a> |
-                <a href="https://www.linkedin.com/company/cloudspiretech">LinkedIn</a>
-            </p>
-        </footer>
-      </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- Ensures proper rendering and touch zooming on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudspire</title>
+  <style>
+    /* Global styles for the entire document */
+    body {
+      font-family: Arial, sans-serif; /* Sets the default font for the entire page */
+      margin: 0; /* Removes default margin */
+      background-color: #ffffff; /* Sets background to white */
+    }
+    
+    /* Header styling with gradient background */
+    header {
+      background: linear-gradient(90deg, #1f3b6e, #612f74); /* Creates a horizontal color gradient */
+      color: white; /* Text color */
+      padding: 20px; /* Space inside the header */
+      text-align: center; /* Centers the text */
+    }
+    
+    /* Navigation bar styling */
+    .nav {
+      display: flex; /* Uses flexbox for layout */
+      justify-content: space-between; /* Spaces items evenly */
+      padding: 10px 40px; /* Top/bottom and left/right padding */
+      align-items: center; /* Vertically centers items */
+    }
+    
+    /* Navigation link styling */
+    .nav a {
+      color: white; /* Link text color */
+      margin-left: 20px; /* Space between links */
+      text-decoration: none; /* Removes underline from links */
+    }
+    
+    /* Introduction section styling */
+    .intro {
+      background-color: #6b539b; /* Purple background */
+      color: white; /* Text color */
+      padding: 60px 40px; /* Generous padding for spacing */
+      text-align: center; /* Centers content */
+    }
+    
+    /* Leadership section styling */
+    .leadership {
+      padding: 40px; /* Adds space around the content */
+      text-align: center; /* Centers content horizontally */
+    }
+    
+    /* Grid layout for team members */
+    .team-grid {
+      display: flex; /* Uses flexbox */
+      flex-wrap: wrap; /* Allows items to wrap to next line */
+      justify-content: center; /* Centers items horizontally */
+      gap: 30px; /* Space between grid items */
+      margin-top: 30px; /* Space above the grid */
+    }
+    
+    /* Individual team member card styling */
+    .team-member {
+      width: 250px; /* Fixed width for consistency */
+    }
+    /* Ensure uniform image sizes for team member images */
+    .team-member img {
+      width: 100%; /* Makes image fill the container */
+      height: 200px; /* Set a fixed height for all images */
+      object-fit: cover; /* Ensures the image covers the area without distortion */
+      border-radius: 10px; /* Rounds corners */
+    }
+    
+    /* Team member name styling */
+    .team-member h3 {
+      margin: 10px 0 5px 0; /* Space around the heading */
+    }
+    
+    /* Team member description styling */
+    .team-member p {
+      font-size: 14px; /* Smaller text size */
+      color: #555; /* Grey text for subtlety */
+    }
+    
+    /* Table caption styling */
+    .interests-table caption {
+      caption-side: top; /* Places caption at the top */
+      margin-bottom: 10px; /* Space below caption */
+      font-weight: bold; /* Makes text bold */
+      font-size: 16px; /* Sets font size */
+    }
+    
+    /* Table cell styling */
+    .interests-table th, .interests-table td {
+      border: 1px solid #999; /* Grey border around cells */
+      padding: 10px; /* Space inside cells */
+      background-color: #e8f1ff; /* Light blue background */
+    }
+    
+    /* Table header styling */
+    .interests-table th {
+      font-weight: bold; /* Bold text for headers */
+      background-color: #cce0ff; /* Slightly darker blue for headers */
+    }
+    
+    /* Hover effect for table rows */
+    .interests-table tbody tr:hover td {
+      background-color: #b3d4fc; /* Highlight color when hovering */
+    }
+    
+    /* Styling for paragraphs in additional info section */
+    .additional-info p {
+      max-width: 900px; /* Limits width for readability */
+      margin: 15px auto; /* Centers with space above/below */
+      line-height: 1.6; /* Increases line height for readability */
+    }
+    
+    /* Student ID list styling - right-aligned sidebar */
+    .student-id-list {
+      float: right; /* Positions to the right */
+      width: 30%; /* Sets width */
+      margin-left: 20px; /* Space to the left */
+      padding: 15px; /* Internal spacing */
+      background-color: #f8f8f8; /* Light grey background */
+      border-left: 3px solid #6b539b; /* Purple accent border */
+      border-radius: 5px; /* Rounded corners */
+    }
+    
+    /* Student ID list item styling */
+    .student-id-list li {
+      padding: 5px 0; /* Vertical spacing */
+      list-style-type: square; /* Square bullets */
+    }
+    
+    /* Figure (image container) styling */
+    figure {
+      float: right; /* Positions to the right */
+      width: 300px; /* Sets width */
+      margin: 0 0 20px 20px; /* Bottom and left margin */
+      border: 3px solid #2c3e50; /* Dark blue border */
+      padding: 10px; /* Space inside border */
+      background-color: white; /* White background */
+      border-radius: 5px; /* Rounded corners */
+    }
+    
+    /* Image within figure styling */
+    figure img {
+      width: 100%; /* Makes image fill container */
+      display: block; /* Block display for proper spacing */
+      border-radius: 3px; /* Slightly rounded corners */
+    }
+    
+    /* Caption styling */
+    figcaption {
+      text-align: center; /* Centers text */
+      font-style: italic; /* Italicizes text */
+      padding: 8px 0; /* Vertical padding */
+      color: #666; /* Dark grey text */
+      font-size: 0.9em; /* Slightly smaller text */
+    }
+    
+    /* Definition list styling */
+    dl {
+      margin-top: 20px; /* Space above */
+    }
+    
+    /* Definition term styling */
+    dt {
+      font-weight: bold; /* Bold text */
+      color: #2c3e50; /* Dark blue text */
+      margin-top: 15px; /* Space above */
+    }
+    
+    /* Definition description styling */
+    dd {
+      margin-left: 20px; /* Indentation */
+      padding-left: 15px; /* Additional space */
+      border-left: 2px solid #e0e0e0; /* Left border for visual hierarchy */
+    }
+    
+    /* Enhanced table styling */
+    .interests-table {
+      margin: 30px auto; /* Centers table with vertical space */
+      width: 90%; /* Table width */
+      border-collapse: collapse; /* Merges borders */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    }
+    
+    /* Enhanced table caption */
+    .interests-table caption {
+      font-size: 1.2em; /* Larger text */
+      margin-bottom: 10px; /* Bottom spacing */
+      font-weight: bold; /* Bold text */
+      color: #333; /* Dark text */
+    }
+    
+    /* Enhanced table headers */
+    .interests-table th {
+      background-color: #6b539b; /* Purple background */
+      color: white; /* White text */
+      font-weight: bold; /* Bold text */
+      text-align: left; /* Left-aligned text */
+      padding: 12px 15px; /* Internal spacing */
+    }
+    
+    /* Enhanced table cells */
+    .interests-table td {
+      background-color: #f2f2f2; /* Light grey background */
+      padding: 10px 15px; /* Internal spacing */
+      border-bottom: 1px solid #ddd; /* Bottom border */
+    }
+    
+    /* Enhanced table row hover effect */
+    .interests-table tr:hover td {
+      background-color: #e6f3ff; /* Light blue highlight */
+      transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    /* Table footer styling */
+    .interests-table tfoot td {
+      background-color: #e0e0e0; /* Grey background */
+      font-style: italic; /* Italic text */
+      text-align: center; /* Centered text */
+    }
+    
+    /* Footer styling */
+    footer {
+      text-align: center; /* Centers content */
+      background: #6b539b; /* Purple background */
+      color: white; /* White text */
+      padding: 15px; /* Internal spacing */
+      margin-top: 40px; /* Space above footer */
+    }
+    
+    /* Footer link styling */
+    footer a {
+      color: #d346a2; /* Pink link color */
+      text-decoration: underline; /* Underlined links */
+    }
+  </style>
+</head>
+<body>
+  <!-- Header section with navigation -->
+  <header id="header">
+    <img src="images/image.logo (2).png"id="logo">
+<hr>
+    <h1 id="page_title">CloudSpire Technologies</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apply.html">Services</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+  </header>
+  <!-- Introduction section with company description -->
+  <section class="intro">
+    <h1>We Are <span style="color:#df46a2;">Cloudspire</span></h1> <!-- Heading with colored company name -->
+    <p>Providing you the gateway to your next big gig.</p> <!-- Tagline -->
+    <p style="max-width: 700px; margin: 0 auto;"> <!-- Limited width paragraph for readability, centered -->
+        Welcome to Cloudspire, your ultimate destination for IT career advancement. We are a dedicated platform designed to connect innovative IT professionals with top-tier job opportunities through our partnership with Infinite Loops. Our mission is to empower tech enthusiasts to navigate their career paths with ease, by providing a user-friendly hub that features diverse job listings, valuable resources, and a supportive community. At Cloudspire, we believe in fostering talent and facilitating meaningful connections in the ever-evolving world of technology. Join us on your journey towards your next great gig!
+    </p>
+  </section>
+  
+  <!-- Leadership section showing team members -->
+  <section class="leadership">
+    <h2>Meet the <span style="color:#d346a2;">Infinite Loops</span></h2> <!-- Section heading with colored team name -->
+    <div class="team-grid"> <!-- Grid container for team members -->
+      <!-- Individual team member cards with images and names -->
+      <div class="team-member">
+        <img src="images/Ishita-01.png" alt="Ishita"> <!-- Placeholder image -->
+        <h3>Ishita</h3> <!-- Team member name -->
+      </div>
+      <div class="team-member">
+        <img src="images/Manroop-02.png" alt="Manroop"> <!-- Placeholder image -->
+        <h3>Manroop</h3> <!-- Team member name -->
+      </div>
+      <div class="team-member">
+        <img src="images/Viresh-03.png" alt="Viresh"> <!-- Team member image -->
+        <h3>Viresh</h3> <!-- Team member name -->
+      </div>
+      <div class="team-member">
+        <img src="images/Zainab-04.png" alt="Zainab"> <!-- Team member image -->
+        <h3>Zainab</h3> <!-- Team member name -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main content section -->
+  <main>
+    <!-- About intro section with student information -->
+    <section class="about-intro">
+        <h1>About Our Team</h1> <!-- Section heading -->          
+        <ul class="student-id-list"> <!-- Sidebar with student information -->
+            <li><strong>Group Name:</strong> Infinite Loops</li> <!-- Group name with bold label -->
+            <li><strong>Class:</strong> Wednesday 4:30-6:30 pm</li> <!-- Class time with bold label -->
+            <li><strong>Student IDs:</strong> <!-- Student IDs with nested list -->
+                <ul>
+                    <li>Ishita - 105517194</li> <!-- Individual student ID -->
+                    <li>Manroop - 105534960</li> <!-- Individual student ID -->
+                    <li>Viresh - 105910175</li> <!-- Individual student ID -->
+                    <li>Zainab - 106087436</li> <!-- Individual student ID -->
+                </ul>
+            </li>
+            <li><strong>Tutor:</strong> Rahul Raghavan </li> <!-- Tutor name with bold label -->
+        </ul>
+    </section>
+
+    <!-- Team contributions section with definition list -->
+    <section class="team-contributions">
+        <h3>Team Contributions</h3> <!-- Section heading -->
+        <dl> <!-- Definition list for team contributions -->
+            <dt>Manroop</dt> <!-- Team member name (term) -->
+            <dd>Developed the apply.html page with form validation, contributed to CSS styling for form elements</dd> <!-- Team member contribution (description) -->
+            
+            <dt>Viresh</dt> <!-- Team member name (term) -->
+            <dd>Created the home page with company branding, implemented navigation menu and coordinated team meetings</dd> <!-- Team member contribution (description) -->
+            
+            <dt>Ishita</dt> <!-- Team member name (term) -->
+            <dd>Developed the jobs.html page with detailed job descriptions, implemented semantic HTML structure</dd> <!-- Team member contribution (description) -->
+            
+            <dt>Zainab</dt> <!-- Team member name (term) -->
+            <dd>Created the about.html page, managed Jira project tracking and designed the logo</dd> <!-- Team member contribution (description) -->
+        </dl>
+    </section>
+    
+    <!-- Team interests section with table and image -->
+    <section class="team-interests">
+        <h3>Our Interests & Skills</h3> <!-- Section heading -->
+        
+        <!-- Table showing team member interests and skills -->
+        <table class="interests-table">
+            <caption>Team Member Skills and Interests</caption> <!-- Table caption -->
+            <thead> <!-- Table header row group -->
+                <tr>
+                    <th>Member</th> <!-- Column header -->
+                    <th>Hobbies</th> <!-- Column header -->
+                    <th>Career Goals</th> <!-- Column header -->
+                </tr>
+            </thead>
+            <tbody> <!-- Table body row group -->
+                <tr> <!-- Table row -->
+                    <td>Manroop</td> <!-- Table cell with member name -->
+                    <td>Gaming, Photography</td> <!-- Table cell with hobbies -->
+                    <td>Game Developer</td> <!-- Table cell with career goal -->
+                </tr>
+                <tr> <!-- Table row -->
+                    <td>Viresh</td> <!-- Table cell with member name -->
+                    <td>Programming, Chess</td> <!-- Table cell with hobbies -->
+                    <td>Full-stack Developer</td> <!-- Table cell with career goal -->
+                </tr>
+                <tr> <!-- Table row -->
+                    <td>Ishita</td> <!-- Table cell with member name -->
+                    <td rowspan="2">Travelling, Music</td> <!-- Table cell spanning 2 rows (shared hobby) -->
+                    <td>Cybersecurity Analyst</td> <!-- Table cell with career goal -->
+                </tr>
+                <tr> <!-- Table row -->
+                    <td>Zainab</td> <!-- Table cell with member name -->
+                    <td>Software Engineer</td> <!-- Table cell with career goal -->
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Figure containing team photo with caption -->
+        <figure>
+          <img src="images/Group-photo.png" alt="Group Photo"> <!-- Team photo with alt text -->
+          <figcaption>Group Members (Left to Right): Manroop, Zainab, Ishita, and Viresh</figcaption> <!-- Caption identifying members -->
+        </figure>
+    </section>
+    
+    <!-- About section with project description -->
+    <section class="about">
+      <h2>A brief insight to our journey and the creation on this website</h2> <!-- Section heading -->
+      <p>Cloudspire is an innovative web development project crafted by our dedicated team, Infinite Loops, under the guidance of Mr. Rahul. Our team comprises four talented individuals: Ishita, Viresh, Manroop, and Zainab, each contributing their unique skills to ensure a seamless collaboration. Ishita, serving as the project lead, has been key in initiating team discussions and fostering accountability, while also enhancing the visual aesthetics and developing the jobs.html page. Manroop, proficient in CSS, has focused on creating an engaging style.css and made significant contributions to the apply.html page, along with managing project pages on GitHub and Jira for effective teamwork. Viresh has laid the groundwork by creating a comprehensive blueprint of the project requirements, leading the development of the index.html page, and drafting the group agreement template. Lastly, Zainab has led the organization of scrum sprints and timelines on Jira, designed the logo for our website, and developed the about.html page. Together, our team has worked collaboratively to bring Cloudspire to life, showcasing our commitment to excellence and innovation in web development.</p> <!-- Detailed project description paragraph -->
+    </section>
+  </main>
+  
+  <!-- Footer section with project link -->
+  <footer>
+    <p>View our project on <a href="https://your-jira-project-link.com" target="_blank">Jira</a></p> <!-- Footer text with external link (opens in new tab) -->
+  </footer>
+</body>
 </html>
