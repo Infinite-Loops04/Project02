@@ -63,10 +63,11 @@
     .team-member {
       width: 250px; /* Fixed width for consistency */
     }
-    
-    /* Team member image styling */
+    /* Ensure uniform image sizes for team member images */
     .team-member img {
       width: 100%; /* Makes image fill the container */
+      height: 200px; /* Set a fixed height for all images */
+      object-fit: cover; /* Ensures the image covers the area without distortion */
       border-radius: 10px; /* Rounds corners */
     }
     
@@ -270,19 +271,19 @@
     <div class="team-grid"> <!-- Grid container for team members -->
       <!-- Individual team member cards with images and names -->
       <div class="team-member">
-        <img src="Ishita-01.png" alt="Ishita"> <!-- Placeholder image -->
+        <img src="images/Ishita-01.png" alt="Ishita"> <!-- Placeholder image -->
         <h3>Ishita</h3> <!-- Team member name -->
       </div>
       <div class="team-member">
-        <img src="Manroop-02.png" alt="Manroop"> <!-- Placeholder image -->
+        <img src="images/Manroop-02.png" alt="Manroop"> <!-- Placeholder image -->
         <h3>Manroop</h3> <!-- Team member name -->
       </div>
       <div class="team-member">
-        <img src="Viresh-03.png" alt="Viresh"> <!-- Team member image -->
+        <img src="images/Viresh-03.png" alt="Viresh"> <!-- Team member image -->
         <h3>Viresh</h3> <!-- Team member name -->
       </div>
       <div class="team-member">
-        <img src="Zainab-04.png" alt="Zainab"> <!-- Team member image -->
+        <img src="images/Zainab-04.png" alt="Zainab"> <!-- Team member image -->
         <h3>Zainab</h3> <!-- Team member name -->
       </div>
     </div>
