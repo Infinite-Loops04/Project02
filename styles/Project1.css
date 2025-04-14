@@ -186,14 +186,14 @@ main h2, section h2 {
 aside {
     text-align: center;
     margin: 20px auto;
-    max-width: 1000px;
+    max-width: 500px;
 }
 
 aside img {
     max-width: 100%;
     height: auto;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
 /* Lists */
@@ -276,4 +276,17 @@ a.apply-now:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     border-color: #1a73e8;
     cursor: pointer;
+}
+#welcome {padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   
+}
+#welcome h1 {
+    color: #1a73e8;
+    margin-bottom: 10px;
 }
