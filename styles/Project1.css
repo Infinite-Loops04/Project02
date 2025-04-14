@@ -223,11 +223,11 @@ a[href*="apply.html"]:hover {
 
 /* Footer */
 footer {
-    background-color: #1a1a1a;
-    color: #ccc;
+    background-color: #0c007b;
+    color: #1b1212;
     text-align: center;
     padding: 15px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     margin-top: 40px;
 }
 
