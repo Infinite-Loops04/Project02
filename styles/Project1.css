@@ -146,7 +146,524 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
+    background: linear-gradient(90deg, #1f3b6e, #6b539b); /* Gradient background */
+    color: white;
+    padding: 20px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky; /* Keeps the header fixed at the top */
+    top: 0;
+    z-index: 1000;
+}
+
+
+#logo{
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-right: auto;
+}
+#header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    margin-right: auto;
+}
+
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    display: block;
+    display: inline-block;
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+}
+
+/* Section Styling */
+section,
+main {
+    background-color: white;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2,
+main h1 {
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+/* Aside styling for images */
+aside {
+    float: right;
+    width: 30%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+aside img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Lists */
+ul {
+    margin: 10px 0 20px 20px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Apply Now button */
+a[href="apply.html"] {
+    display: inline-block;
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+a[href="apply.html"]:hover {
+    background-color: #0055aa;
+}
+
+/* Footer */
+#footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #6b539b;
+    color: white;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    aside {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+#welcome h1{
+    color: #0055aa;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#welcome {
+    background-color: white;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#about_body {
+    font-family: Arial, sans-serif; /* Sets the default font for the entire page */
+    margin: 0; /* Removes default margin */
+    background-color: #ffffff; /* Sets background to white */
+}
+  
+/* Header styling with gradient background */
+#about_header {
+    background: linear-gradient(90deg, #1f3b6e, #612f74); /* Creates a horizontal color gradient */
+    color: white; /* Text color */
+    padding: 20px; /* Space inside the header */
+    text-align: center; /* Centers the text */
+}
+  
+  /* Navigation bar styling */
+nav {
+    display: flex; /* Uses flexbox for layout */
+    justify-content: space-between; /* Spaces items evenly */
+    padding: 10px 40px; /* Top/bottom and left/right padding */
+    align-items: center; /* Vertically centers items */
+}
+  
+  /* Navigation link styling */
+nav ul li a {
+    color: white; /* Link text color */
+    margin-left: 20px; /* Space between links */
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s;/*gives transition time when hovered upon*/
+
+}
+  
+/* Introduction section styling */
+.intro {
+    background-color: #6b539b; /* Purple background */
+    color: white; /* Text color */
+    padding: 60px 40px; /* Generous padding for spacing */
+    text-align: center; /* Centers content */
+}
+  
+/* Leadership section styling */
+.leadership {
+    padding: 40px; /* Adds space around the content */
+    text-align: center; /* Centers content horizontally */
+}
+  
+/* Grid layout for team members */
+.team-grid {
+    display: flex; /* Uses flexbox */
+    flex-wrap: wrap; /* Allows items to wrap to next line */
+    justify-content: center; /* Centers items horizontally */
+    gap: 30px; /* Space between grid items */
+    margin-top: 30px; /* Space above the grid */
+}
+  
+/* Individual team member card styling */
+.team-member {
+    width: 250px; /* Fixed width for consistency */
+}
+/* Ensure uniform image sizes for team member images */
+.team-member img {
+    width: 100%; /* Makes image fill the container */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 10px; /* Rounds corners */
+}
+  
+/* Team member name styling */
+.team-member h3 {
+    margin: 10px 0 5px 0; /* Space around the heading */
+}
+  
+/* Team member description styling */
+.team-member p {
+    font-size: 14px; /* Smaller text size */
+    color: #555; /* Grey text for subtlety */
+}
+  
+/* Table caption styling */
+.interests-table caption {
+    caption-side: top; /* Places caption at the top */
+    margin-bottom: 10px; /* Space below caption */
+    font-weight: bold; /* Makes text bold */
+    font-size: 16px; /* Sets font size */
+}
+  
+/* Table cell styling */
+.interests-table th, .interests-table td {
+    border: 1px solid #999; /* Grey border around cells */
+    padding: 10px; /* Space inside cells */
+    background-color: #e8f1ff; /* Light blue background */
+}
+  
+/* Table header styling */
+.interests-table th {
+    font-weight: bold; /* Bold text for headers */
+    background-color: #cce0ff; /* Slightly darker blue for headers */
+}
+  
+/* Hover effect for table rows */
+.interests-table tbody tr:hover td {
+    background-color: #b3d4fc; /* Highlight color when hovering */
+}
+  
+/* Styling for paragraphs in additional info section */
+.additional-info p {
+    max-width: 900px; /* Limits width for readability */
+    margin: 15px auto; /* Centers with space above/below */
+    line-height: 1.6; /* Increases line height for readability */
+}
+  
+/* Student ID list styling - right-aligned sidebar */
+.student-id-list {
+    float: right; /* Positions to the right */
+    width: 30%; /* Sets width */
+    margin-left: 20px; /* Space to the left */
+    padding: 15px; /* Internal spacing */
+    background-color: #f8f8f8; /* Light grey background */
+    border-left: 3px solid #6b539b; /* Purple accent border */
+    border-radius: 5px; /* Rounded corners */
+}
+  
+/* Student ID list item styling */
+.student-id-list li {
+    padding: 5px 0; /* Vertical spacing */
+    list-style-type: square; /* Square bullets */
+}
+  
+/* Figure (image container) styling */
+#group_photo {
+    float: right; /* Positions to the right */
+    width: 300px; /* Sets width */
+    margin: 0 0 20px 20px; /* Bottom and left margin */
+    border: 3px solid #2c3e50; /* Dark blue border */
+    padding: 10px; /* Space inside border */
+    background-color: white; /* White background */
+    border-radius: 5px; /* Rounded corners */
+}
+  
+/* Image within figure styling */
+#group_photo img {
+    width: 100%; /* Makes image fill container */
+    display: block; /* Block display for proper spacing */
+    border-radius: 3px; /* Slightly rounded corners */
+}
+  
+/* Caption styling */
+#group_caption {
+    text-align: center; /* Centers text */
+    font-style: italic; /* Italicizes text */
+    padding: 8px 0; /* Vertical padding */
+    color: #666; /* Dark grey text */
+    font-size: 0.9em; /* Slightly smaller text */
+}
+  
+/* Definition list styling */
+#contributors {
+    margin-top: 20px; /* Space above */
+}
+  
+  /* Definition term styling */
+.contributer_name {
+    font-weight: bold; /* Bold text */
+    color: #2c3e50; /* Dark blue text */
+    margin-top: 15px; /* Space above */
+}
+  
+/* Definition description styling */
+.contribution {
+    margin-left: 20px; /* Indentation */
+    padding-left: 15px; /* Additional space */
+    border-left: 2px solid #e0e0e0; /* Left border for visual hierarchy */
+}
+  
+/* Enhanced table styling */
+.interests-table {
+    margin: 30px auto; /* Centers table with vertical space */
+    width: 90%; /* Table width */
+    border-collapse: collapse; /* Merges borders */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+  
+/* Enhanced table caption */
+.interests-table caption {
+    font-size: 1.2em; /* Larger text */
+    margin-bottom: 10px; /* Bottom spacing */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text */
+}
+  
+/* Enhanced table headers */
+.interests-table th {
+    background-color: #6b539b; /* Purple background */
+    color: white; /* White text */
+    font-weight: bold; /* Bold text */
+    text-align: left; /* Left-aligned text */
+    padding: 12px 15px; /* Internal spacing */
+}
+  
+/* Enhanced table cells */
+.interests-table td {
+    background-color: #f2f2f2; /* Light grey background */
+    padding: 10px 15px; /* Internal spacing */
+    border-bottom: 1px solid #ddd; /* Bottom border */
+}
+  
+/* Enhanced table row hover effect */
+.interests-table tr:hover td {
+    background-color: #e6f3ff; /* Light blue highlight */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+  
+/* Table footer styling */
+.interests-table tfoot td {
+    background-color: #e0e0e0; /* Grey background */
+    font-style: italic; /* Italic text */
+    text-align: center; /* Centered text */
+}
+  
+/* Footer styling */
+#about_footer {
+    text-align: center; /* Centers content */
+    background: #6b539b; /* Purple background */
+    color: white; /* White text */
+    padding: 15px; /* Internal spacing */
+    margin-top: 40px; /* Space above footer */
+}
+  
+/* Footer link styling */
+#about_footer a {
+    color: #d346a2; /* Pink link color */
+    text-decoration: underline; /* Underlined links */
+}
+
+.button{
+    text-decoration: none;
+    color: black;
+}
+.button:hover{
+    color: #00bcd4;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #00bcd4;
+}
+/* apply page css*/
+/* General Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#apply_body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+#apply_header {
     background: linear-gradient(90deg, #1f3b6e, #612f74);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+#apply_header h1 {
+    margin-bottom: 10px;
+    color: rgb(79, 252, 136);
+}
+#apply_nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+#apply_nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+#apply_nav ul li a:hover {
+    color: #00bcd4;
+}
+/* Main Content Styles */
+#form_body {
+    background-color: white;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+form h2 {
+    margin-bottom: 15px;
+    color: #1f3b6e;
+}
+form p,form label,form input,form select,form textarea {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+/* Use Grid for Name and Address sections */
+#applicant_details p,#applicant_address p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+input[type="text"],input[type="email"],select,textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+/* Gender Fieldset Styling */
+fieldset#gender {
+    border: 2px solid #1f3b6e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+fieldset#gender legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+fieldset#gender p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+}
+/* Checkbox Section (Vertical Layout) */
+#job_details h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #1f3b6e;
+}
+#job_details label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-weight: 500;
+}
+#job_details input[type="checkbox"] {
+    transform: scale(1.1);
+    cursor: pointer;
+    margin: 0;
+}
+/* Submit/Reset Buttons */
+input[type="submit"],input[type="reset"] {
+    background-color: #1f3b6e;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+input[type="submit"]:hover,input[type="reset"]:hover {
+    background-color: #612f74;
+}
+/* Footer Styling */
+#apply_footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #666;
+}
+#apply_footer a {
+    color: #1f3b6e;
+    text-decoration: none;
+}
+#apply_footer a:hover {
+    text-decoration: underline;
+}
+#index_body{
+    background: url(images/image.png);
 }
 #about_body {
     font-family: Arial, sans-serif; /* Sets the default font for the entire page */
