@@ -23,7 +23,7 @@
         </header>
         <main id="form_body">
             <!--sending the entered information to the below address-->
-            <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+            <form action="process_eoi.php" method="POST">
                 <!--collects the personal information of the applicant-->
                 <div id="applicant_details">
                     <h2>Applicant Details</h2>
