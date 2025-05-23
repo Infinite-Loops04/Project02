@@ -1,7 +1,7 @@
 <?php
     require_once("settings.php");
     //prevent direct access to the script
-    if ($_SERVER["REQUEST_METHOD"] !== "POST")
+    if ($_SERVER["REQUEST_METHOD"] != "POST")
     {
         //redirect to apply.php
         header("Location: apply.php");
@@ -49,5 +49,26 @@
         $data = htmlspecialchars($data);    // convert special HTML characters
         return $data;
     }
-    $jobreferencenumber
+    $errors = [];
+    $jobReferenceNumber = sanitize_input($_POST["job_ref_no"]);
+    $firstname = sanitize_input($_POST["first_name"]);
+    if (!preg_match("/^[a-zA-Z]{1,20}$/",$firstname))
+    {
+        $errors[] = "First name must be 1-20 alphabetic characters.";
+    }
+    $lastname = sanitize_input($_POST["last_name"]);
+    if (!preg_match("/^[a-zA-Z]{1,20}$/",$lastname))
+    {
+        $errors[] = "Last name must be 1-20 alphabetic characters.";
+    }
+    $dob = sanitize_input($_POST["dob"]);
+    $dob_parts = explode('/',$dob);
+    if (count($dob_parts) == 3)
+    {
+        $dob_sql = "{$dob_parts[2]}-{$dob_parts[1]}-{$dob_parts[0]}";
+    }
+    else
+    {
+        $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
+    }
 ?>

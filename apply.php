@@ -105,18 +105,18 @@
                     <br>
                     <!--this list was generated using chatGPT-->
                     <h3>Select the Technical Skills you're Familiar with:</h3><!--collect the technical skills the applicant has-->
-                    <label><input type="checkbox" id="wireshark" name="skills" value="wireshark" checked><strong>Wireshark</strong> - Analyze and inspect network traffic</label>
-                    <label><input type="checkbox" id="nmap" name="skills" value="nmap"><strong>Nmap</strong> - Scan networks and detect open ports</label>
-                    <label><input type="checkbox" id="burp" name="skills" value="burp_suite"><strong>Burp Suite</strong> - Test for web application vulnerabilities</label>
-                    <label><input type="checkbox" id="linux" name="skills" value="basic_linux"><strong>Basic Linux Commands</strong> - Navigation, permissions, user management</label>
-                    <label><input type="checkbox" id="win_security" name="skills" value="win_security_basics"><strong>Windows Security Basics</strong> - File permissions, user roles, AD overview</label>                    
-                    <label><input type="checkbox" id="basic_networking" name="skills" value="basic_networking"><strong>Basic Networking</strong> - Understand TCP/IP, DNS, ports, VPN</label>
-                    <label><input type="checkbox" id="firewall" name="skills" value="firewall_rules"><strong>Firewall Rules & Access Control</strong> - Basic concepts of traffic control</label>
-                    <label><input type="checkbox" id="siem" name="skills" value="siem_tools"><strong>SIEM Tools (e.g., Splunk)</strong> - Basic log searching and alerting</label>
-                    <label><input type="checkbox" id="owasp" name="skills" value="owasp_awareness"><strong>OWASP Top 10 Awareness</strong> - Common web security issues</label>
-                    <label><input type="checkbox" id="irs" name="skills" value="incident_response_steps"><strong>Incident Response Steps</strong> - Know the phases of handling a security event</label>
-                    <label><input type="checkbox" id="cloud" name="skills" value="cloud_security_fundamentals"><strong>Cloud Security Fundamentals</strong> - Understand AWS/Azure basic security controls</label>
-                    <label><input type="checkbox" id="python" name="skills" value="python_powershell_scripting"><strong>Python or PowerShell Scripting</strong> - Write simple automation scripts</label>
+                    <label><input type="checkbox" id="skill1" name="skills" value="wireshark" checked><strong>Wireshark</strong> - Analyze and inspect network traffic</label>
+                    <label><input type="checkbox" id="skill2" name="skills" value="nmap"><strong>Nmap</strong> - Scan networks and detect open ports</label>
+                    <label><input type="checkbox" id="skill3" name="skills" value="burp_suite"><strong>Burp Suite</strong> - Test for web application vulnerabilities</label>
+                    <label><input type="checkbox" id="skill4" name="skills" value="basic_linux"><strong>Basic Linux Commands</strong> - Navigation, permissions, user management</label>
+                    <label><input type="checkbox" id="skill5" name="skills" value="win_security_basics"><strong>Windows Security Basics</strong> - File permissions, user roles, AD overview</label>                    
+                    <label><input type="checkbox" id="skill6" name="skills" value="basic_networking"><strong>Basic Networking</strong> - Understand TCP/IP, DNS, ports, VPN</label>
+                    <label><input type="checkbox" id="skill7" name="skills" value="firewall_rules"><strong>Firewall Rules & Access Control</strong> - Basic concepts of traffic control</label>
+                    <label><input type="checkbox" id="skill8" name="skills" value="siem_tools"><strong>SIEM Tools (e.g., Splunk)</strong> - Basic log searching and alerting</label>
+                    <label><input type="checkbox" id="skill9" name="skills" value="owasp_awareness"><strong>OWASP Top 10 Awareness</strong> - Common web security issues</label>
+                    <label><input type="checkbox" id="skill10" name="skills" value="incident_response_steps"><strong>Incident Response Steps</strong> - Know the phases of handling a security event</label>
+                    <label><input type="checkbox" id="skill11" name="skills" value="cloud_security_fundamentals"><strong>Cloud Security Fundamentals</strong> - Understand AWS/Azure basic security controls</label>
+                    <label><input type="checkbox" id="skill12" name="skills" value="python_powershell_scripting"><strong>Python or PowerShell Scripting</strong> - Write simple automation scripts</label>
                     <h3>Other Skills</h3>
                     <textarea name="other_skills" id="other_skills" rows="5" cols="40"></textarea><!--collect any other skills the applicant may have-->
                 </div>
