@@ -73,6 +73,7 @@
         }
     }
     $otherSkills = sanitize_input($_POST["other_skills"])
+    $status = 'New';//Default
     $errors = [];
     //Required field check
     if (empty($firstname))
@@ -153,4 +154,38 @@
     {
         $errors[] = "Phone number must be 8-12 digits";
     }
+    //redirect to error page if any errors are detected
+    if (!empty($errors))
+    {
+        $_SESSION['validation_errors'] = $errors;
+        header("Location: error.php");
+        exit();
+    }
+    $stmt = mysqli_prepare($conn,
+        "INSERT INTO eoi (
+            JobReferenceNumber, FirstName, LastName,
+            StreetAddress, SuburbTown, State, Postcode, EmailAddress,
+            PhoneNumber, Skill1, Skill2, Skill3, Skill4, Skill5, Skill6, Skill7,
+            Skill8, Skill9, Skill10, Skill11, Skill12, OtherSkills, Status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    );
+    mysqli_stmt_bind_param($stmt, 'sssssssssssiiiiiiiiiiiis',
+        $jobReferenceNumber, $firstname, $lastname,
+        $streetAddress, $suburbTown, $state, $postcode, $email,
+        $phone, $skills[1], $skills[2], $skills[3], $skills[4], $skills[5],
+        $skills[6], $skills[7], $skills[8], $skills[9], $skills[10],
+        $skills[11], $skills[12], $otherSkills, $status
+    );
+    if (mysqli_stmt_execute($stmt))
+    {
+        $eoiNumber = mysqli_insert_id($conn);
+        echo "<h2>Application Submitted Successfully!</h2>";
+        echo "<p>Your EOInumber is: <strong>$eoiNumber</strong></p>";
+    }
+    else
+    {
+        echo "<p>Error: " . mysqli_error($conn) . "</p>";
+    }
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
 ?>
