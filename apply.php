@@ -28,29 +28,29 @@
                 <div id="applicant_details">
                     <h2>Applicant Details</h2>
                     <p><label for ="first_name">First Name</label>
-                        <input type="text" name="first_name" id="first_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid first name" required="required"><!--collects the first name of the applicant-->
+                        <input type="text" name="first_name" id="first_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid first name" required="required" novalidate><!--collects the first name of the applicant-->
                         <label for ="last_name">Last Name</label>
-                        <input type="text" name="last_name" id="last_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid last name" required="required"><!--collect the last name of the applicant-->
+                        <input type="text" name="last_name" id="last_name" maxlength="20" pattern="[A-Za-z]+" title="Please enter a valid last name" required="required" novalidate><!--collect the last name of the applicant-->
                     </p>
                     <p><label for="dob">Date of Birth</label>
-                        <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Enter a valid date"><!--collect the date of birth of applicant-->
+                        <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Enter a valid date" novalidate><!--collect the date of birth of applicant-->
                     </p>
                     <fieldset id="gender"><!--collect the gender of applicant in terms of a radio input-->
                         <legend>Gender</legend>
                         <p>
-                            <input type="radio" name="gender" id="male" value="male" required="required">
+                            <input type="radio" name="gender" id="male" value="male" required="required" novalidate>
                             <label for="male">Male</label>
                         </p>
                         <p>
-                            <input type="radio" name="gender" id="female" value="female" required="required">
+                            <input type="radio" name="gender" id="female" value="female" required="required" novalidate>
                             <label for="female">Female</label>
                         </p>
                         <p>
-                            <input type="radio" name="gender" id="other" value="other" required="required">
+                            <input type="radio" name="gender" id="other" value="other" required="required" novalidate>
                             <label for="other">Other</label>
                         </p>
                         <p>
-                            <input type="radio" name="gender" id="prefer_not" value="prefer_not" required="required">
+                            <input type="radio" name="gender" id="prefer_not" value="prefer_not" required="required" novalidate>
                             <label for="prefer_not">Prefer not to say</label>
                         </p>
                     </fieldset>
@@ -60,65 +60,65 @@
                     <h2>Applicant Address</h2>
                     <p>
                         <label for ="street_address">Street Address</label>
-                        <input type="text" name="street_address" id="street_address" maxlength="40" required="required"><!--collect the street address of the applicant-->
+                        <input type="text" name="street_address" id="street_address" maxlength="40" required="required" novalidate><!--collect the street address of the applicant-->
                     </p>
                     <label for ="suburb">Suburb/Town</label>
-                    <input type="text" name="suburb" id="suburb" maxlength="40" required="required"><!--collect the suburb or town of applicant-->
+                    <input type="text" name="suburb" id="suburb" maxlength="40" required="required" novalidate><!--collect the suburb or town of applicant-->
                     <p>
                         <label for="state">State</label>
-                        <select name="state" id="state" required="required"><!--collect the state of the applicant out of the given options-->
+                        <select name="state" id="state" required="required" novalidate><!--collect the state of the applicant out of the given options-->
                             <option value="">Please select your State</option>
-                            <option value="vic">VIC</option>
+                            <option value="act">ACT</option>
                             <option value="nsw">NSW</option>
-                            <option value="qld">QLD</option>
                             <option value="nt">NT</option>
-                            <option value="wa">WA</option>
+                            <option value="qld">QLD</option>
                             <option value="sa">SA</option>
                             <option value="tas">TAS</option>
-                            <option value="act">ACT</option>
+                            <option value="vic">VIC</option>
+                            <option value="wa">WA</option>
                         </select>
                     </p>
                     <label for ="postcode">Postcode</label>
-                    <input type="text" name="postcode" id="postcode" pattern="\d{4}" title="Please enter a valid Postcode" required="required"><!--collect the postcode of the applicant-->
+                    <input type="text" name="postcode" id="postcode" pattern="\d{4}" title="Please enter a valid Postcode" required="required" novalidate><!--collect the postcode of the applicant-->
                 </div>
                 <!--collect the contact details of the applicant-->
                 <div id="contact_details">
                     <h2>Contact Details</h2>
                     <label for ="email_address">Email Address</label>
-                    <input type="email" name="email_address" id="email_address" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required="required"><!--collect the email adress of the applicant-->
+                    <input type="email" name="email_address" id="email_address" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required="required" novalidate><!--collect the email adress of the applicant-->
                     <p>
                         <label for ="phone_number">Phone Number</label>
-                        <input type="text" name="phone_number" id="phone_number" pattern="(\d\s?){8,12}" required="required"><!--collect the phone number of the applicant-->
+                        <input type="text" name="phone_number" id="phone_number" pattern="(\d\s?){8,12}" required="required" novalidate><!--collect the phone number of the applicant-->
                     </p>
                 </div>
                 <!--collect the job details the applicant wants-->
                 <div id="job_details">
                     <h2>Job Details</h2>
                     <h3>Job Position</h3>
-                    <select name="job_ref_no" id="job_ref_no" required="required"><!--collect the job reference number of the favored job position-->
+                    <select name="job_ref_no" id="job_ref_no" required="required" novalidate><!--collect the job reference number of the favored job position-->
                         <option value="">Please select your preferred Position</option>
+                        <option value="cfa-2025-63">Computer Forensic Analyst(CFA-2025-63)</option>
                         <option value="css-2025-21">Cyber Security Specialist(CSS-2025-21)</option>
                         <option value="eha-2025-86">Ethical Hacker(EHA-2025-86)</option>
-                        <option value="cfa-2025-63">Computer Forensic Analyst(CFA-2025-63)</option>
                         <option value="ise-2025-26">IT Security Engineer(ISE-2025-26)</option>
                     </select>
                     <br>
                     <!--this list was generated using chatGPT-->
                     <h3>Select the Technical Skills you're Familiar with:</h3><!--collect the technical skills the applicant has-->
-                    <label><input type="checkbox" id="skill1" name="skills" value="wireshark" checked><strong>Wireshark</strong> - Analyze and inspect network traffic</label>
-                    <label><input type="checkbox" id="skill2" name="skills" value="nmap"><strong>Nmap</strong> - Scan networks and detect open ports</label>
-                    <label><input type="checkbox" id="skill3" name="skills" value="burp_suite"><strong>Burp Suite</strong> - Test for web application vulnerabilities</label>
-                    <label><input type="checkbox" id="skill4" name="skills" value="basic_linux"><strong>Basic Linux Commands</strong> - Navigation, permissions, user management</label>
-                    <label><input type="checkbox" id="skill5" name="skills" value="win_security_basics"><strong>Windows Security Basics</strong> - File permissions, user roles, AD overview</label>                    
-                    <label><input type="checkbox" id="skill6" name="skills" value="basic_networking"><strong>Basic Networking</strong> - Understand TCP/IP, DNS, ports, VPN</label>
-                    <label><input type="checkbox" id="skill7" name="skills" value="firewall_rules"><strong>Firewall Rules & Access Control</strong> - Basic concepts of traffic control</label>
-                    <label><input type="checkbox" id="skill8" name="skills" value="siem_tools"><strong>SIEM Tools (e.g., Splunk)</strong> - Basic log searching and alerting</label>
-                    <label><input type="checkbox" id="skill9" name="skills" value="owasp_awareness"><strong>OWASP Top 10 Awareness</strong> - Common web security issues</label>
-                    <label><input type="checkbox" id="skill10" name="skills" value="incident_response_steps"><strong>Incident Response Steps</strong> - Know the phases of handling a security event</label>
-                    <label><input type="checkbox" id="skill11" name="skills" value="cloud_security_fundamentals"><strong>Cloud Security Fundamentals</strong> - Understand AWS/Azure basic security controls</label>
-                    <label><input type="checkbox" id="skill12" name="skills" value="python_powershell_scripting"><strong>Python or PowerShell Scripting</strong> - Write simple automation scripts</label>
+                    <label><input type="checkbox" id="skill1" name="skills[]" value="wireshark" checked novalidate><strong>Wireshark</strong> - Analyze and inspect network traffic</label>
+                    <label><input type="checkbox" id="skill2" name="skills[]" value="nmap" novalidate><strong>Nmap</strong> - Scan networks and detect open ports</label>
+                    <label><input type="checkbox" id="skill3" name="skills[]" value="burp_suite" novalidate><strong>Burp Suite</strong> - Test for web application vulnerabilities</label>
+                    <label><input type="checkbox" id="skill4" name="skills[]" value="basic_linux" novalidate><strong>Basic Linux Commands</strong> - Navigation, permissions, user management</label>
+                    <label><input type="checkbox" id="skill5" name="skills[]" value="win_security_basics" novalidate><strong>Windows Security Basics</strong> - File permissions, user roles, AD overview</label>                    
+                    <label><input type="checkbox" id="skill6" name="skills[]" value="basic_networking" novalidate><strong>Basic Networking</strong> - Understand TCP/IP, DNS, ports, VPN</label>
+                    <label><input type="checkbox" id="skill7" name="skills[]" value="firewall_rules" novalidate><strong>Firewall Rules & Access Control</strong> - Basic concepts of traffic control</label>
+                    <label><input type="checkbox" id="skill8" name="skills[]" value="siem_tools" novalidate><strong>SIEM Tools (e.g., Splunk)</strong> - Basic log searching and alerting</label>
+                    <label><input type="checkbox" id="skill9" name="skills[]" value="owasp_awareness" novalidate><strong>OWASP Top 10 Awareness</strong> - Common web security issues</label>
+                    <label><input type="checkbox" id="skill10" name="skills[]" value="incident_response_steps" novalidate><strong>Incident Response Steps</strong> - Know the phases of handling a security event</label>
+                    <label><input type="checkbox" id="skill11" name="skills[]" value="cloud_security_fundamentals" novalidate><strong>Cloud Security Fundamentals</strong> - Understand AWS/Azure basic security controls</label>
+                    <label><input type="checkbox" id="skill12" name="skills[]" value="python_powershell_scripting" novalidate><strong>Python or PowerShell Scripting</strong> - Write simple automation scripts</label>
                     <h3>Other Skills</h3>
-                    <textarea name="other_skills" id="other_skills" rows="5" cols="40"></textarea><!--collect any other skills the applicant may have-->
+                    <textarea name="other_skills" id="other_skills" rows="5" cols="40" novalidate></textarea><!--collect any other skills the applicant may have-->
                 </div>
                 <br>
                 <input type="submit" value="Apply">
