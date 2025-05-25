@@ -15,9 +15,9 @@
             <!--menu to go to other pages of the website-->
             <nav id="apply_nav">
                 <ul>
-                    <li><a class="menu" href="index.html">Home</a></li>
-                    <li><a class="menu" href="jobs.html">Jobs</a></li>
-                    <li><a class="menu" href="about.html">About Us</a></li>
+                    <li><a class="menu" href="index.php">Home</a></li>
+                    <li><a class="menu" href="jobs.php">Jobs</a></li>
+                    <li><a class="menu" href="about.php">About Us</a></li>
                 </ul>
             </nav>
         </header>
