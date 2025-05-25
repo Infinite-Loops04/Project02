@@ -1,8 +1,4 @@
-<?php
-include 'settings.php';
-$sql = "SELECT title, description, responsibilities, skills, education_experience, salary_range, image FROM jobs";
-$result = $conn->query($sql);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +10,12 @@ $result = $conn->query($sql);
         <link rel="stylesheet" type="text/css" href="styles/Project1.css">
         <title>CloudSpire Careers | pursue your dreams</title>
     </head>
+    <?php
+    require_once 'settings.php';
+    // Connect to the database
+    $query = "SELECT * FROM jobs";
+    $result = mysqli_query($conn, $query);
+    ?>
     <body>
         <header id="header">
            <img id="logo" src="images/cloudspire_logo.png" alt="CloudSpire Logo">
@@ -22,9 +24,9 @@ $result = $conn->query($sql);
            <h1 id="page_title">CloudSpire Technologies</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="apply.html">Services</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="apply.php">Services</a></li>
                 </ul>
             </nav>
         </header>
