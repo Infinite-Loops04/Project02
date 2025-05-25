@@ -15,4 +15,3 @@
     </nav>
     <hr>
 </header>
-
