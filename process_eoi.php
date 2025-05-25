@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("settings.php");
     //prevent direct access to the script
     if ($_SERVER["REQUEST_METHOD"] != "POST")
@@ -16,7 +17,7 @@
         $create_table_query = "
             CREATE TABLE eoi (
                 EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-                JobRefenrenceNumber VARCHAR(20) NOT NULL,
+                JobReferenceNumber VARCHAR(20) NOT NULL,
                 FirstName VARCHAR(20) NOT NULL,
                 LastName VARCHAR(20) NOT NULL,
                 StreetAddress VARCHAR(40) NOT NULL,
@@ -40,7 +41,7 @@
                 OtherSkills TEXT,
                 Status ENUM('New','Current','Final') DEFAULT 'New'
             );";
-            mysqli_query($conn, $create_table_query)
+        mysqli_query($conn, $create_table_query);
     }
     function sanitize_input($data)
     {
@@ -65,15 +66,15 @@
     {
         if (isset($_POST["skill$i"]))
         {
-            $skill[$i] = 1;
+            $skills[$i] = 1;
         }
         else
         {
-            $skill[$i] = 0;
+            $skills[$i] = 0;
         }
     }
-    $otherSkills = sanitize_input($_POST["other_skills"])
-    $status = 'New';//Default
+    $otherSkills = sanitize_input($_POST["other_skills"]);
+    $status = 'New';//Default;
     $errors = [];
     //Required field check
     if (empty($firstname))
@@ -121,36 +122,27 @@
         $errors[] = "Job reference number is required.";
     }
     //Format validation
-    if (!preg_match("/^[a-zA-Z]{1,20}$/",$firstname))
+    if (!preg_match("/^[a-zA-Z]{1,20}$/",$firstname) && !empty($firstname))
     {
         $errors[] = "First name must be 1-20 alphabetic characters.";
     }
-    if (!preg_match("/^[a-zA-Z]{1,20}$/",$lastname))
+    if (!preg_match("/^[a-zA-Z]{1,20}$/",$lastname) && !empty($lastname))
     {
         $errors[] = "Last name must be 1-20 alphabetic characters.";
     }
-    if (!preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $dob))
+    if (!preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $dob) && !empty($dob))
     {
         $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
     }
-    $dob_parts = explode('/',$dob);
-    if (count($dob_parts) == 3)
-    {
-        $dob_sql = "{$dob_parts[2]}-{$dob_parts[1]}-{$dob_parts[0]}";
-    }
-    else
-    {
-        $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
-    }
-    if (!preg_match("/^\d{4}$/", $postcode))
+    if (!preg_match("/^\d{4}$/", $postcode) && !empty($postcode))
     {
         $errors[] = "Postcode must be 4 digits";
     }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($email))
     {
         $errors[] = "Invalid email address";
     }
-    if (!preg_match("/^[0-9 ]{8,12}$/", $phone))
+    if (!preg_match("/^[0-9 ]{8,12}$/", $phone) && !empty($phone))
     {
         $errors[] = "Phone number must be 8-12 digits";
     }
@@ -167,9 +159,9 @@
             StreetAddress, SuburbTown, State, Postcode, EmailAddress,
             PhoneNumber, Skill1, Skill2, Skill3, Skill4, Skill5, Skill6, Skill7,
             Skill8, Skill9, Skill10, Skill11, Skill12, OtherSkills, Status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     );
-    mysqli_stmt_bind_param($stmt, 'sssssssssssiiiiiiiiiiiis',
+    mysqli_stmt_bind_param($stmt, 'sssssssssiiiiiiiiiiiiss',
         $jobReferenceNumber, $firstname, $lastname,
         $streetAddress, $suburbTown, $state, $postcode, $email,
         $phone, $skills[1], $skills[2], $skills[3], $skills[4], $skills[5],
