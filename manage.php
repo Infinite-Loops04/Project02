@@ -106,4 +106,4 @@ $conn->close();
     <button type="submit" name="list_all">List All EOIs</button>
 </form>
 
-<h3>List EOIs for a specific position</h3
+<h3>List EOIs for a specific position</h3>

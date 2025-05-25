@@ -15,9 +15,9 @@
     <h1 id="page_title">CloudSpire Technologies</h1>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="apply.html">Services</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="apply.php">Services</a></li>
+            <li><a href="jobs.php">Jobs</a></li>
         </ul>
     </nav>
 </header>
