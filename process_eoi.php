@@ -1,183 +1,151 @@
 <?php
-    session_start();
-    require_once("settings.php");
-    //prevent direct access to the script
-    if ($_SERVER["REQUEST_METHOD"] != "POST")
-    {
-        //redirect to apply.php
-        header("Location: apply.php");
-        exit();
-    }
-    //check if 'eoi' table exists
-    $table_check_query = " SHOW TABLES LIKE 'eoi'";
-    $result = mysqli_query($conn, $table_check_query);
-    if (mysqli_num_rows($result) == 0)
-    {
-        //create table if it doesnt exist
-        $create_table_query = "
-            CREATE TABLE eoi (
-                EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-                JobReferenceNumber VARCHAR(20) NOT NULL,
-                FirstName VARCHAR(20) NOT NULL,
-                LastName VARCHAR(20) NOT NULL,
-                StreetAddress VARCHAR(40) NOT NULL,
-                SuburbTown VARCHAR(40) NOT NULL,
-                State ENUM('VIC','NSW','QLD','NT','WA','SA','TAS','ACT') NOT NULL,
-                Postcode CHAR(4) NOT NULL,
-                EmailAddress VARCHAR(100) NOT NULL,
-                PhoneNumber VARCHAR(15) NOT NULL,
-                Skill1 BOOLEAN,
-                Skill2 BOOLEAN,
-                Skill3 BOOLEAN,
-                Skill4 BOOLEAN,
-                Skill5 BOOLEAN,
-                Skill6 BOOLEAN,
-                Skill7 BOOLEAN,
-                Skill8 BOOLEAN,
-                Skill9 BOOLEAN,
-                Skill10 BOOLEAN,
-                Skill11 BOOLEAN,
-                Skill12 BOOLEAN,
-                OtherSkills TEXT,
-                Status ENUM('New','Current','Final') DEFAULT 'New'
-            );";
-        mysqli_query($conn, $create_table_query);
-    }
-    function sanitize_input($data)
-    {
-        $data = trim($data);    //remove leading and trailing spaces
-        $data = stripslashes($data);    //remove backslashes
-        $data = htmlspecialchars($data);    // convert special HTML characters
-        return $data;
-    }
-    $firstname = sanitize_input($_POST["first_name"]);
-    $lastname = sanitize_input($_POST["last_name"]);
-    $dob = sanitize_input($_POST["dob"]);
-    $gender = sanitize_input($_POST["gender"]);
-    $streetAddress = sanitize_input($_POST["street_address"]);
-    $suburbTown = sanitize_input($_POST["suburb"]);
-    $state = sanitize_input($_POST["state"]);
-    $postcode = sanitize_input($_POST["postcode"]);
-    $email = sanitize_input($_POST["email_address"]);
-    $phone = sanitize_input($_POST["phone_number"]);
-    $jobReferenceNumber = sanitize_input($_POST["job_ref_no"]);
-    $skills = [];
-    for ($i = 1;$i <= 12;$i++)
-    {
-        if (isset($_POST["skill$i"]))
-        {
-            $skills[$i] = 1;
-        }
-        else
-        {
-            $skills[$i] = 0;
-        }
-    }
-    $otherSkills = sanitize_input($_POST["other_skills"]);
-    $status = 'New';//Default;
-    $errors = [];
-    //Required field check
-    if (empty($firstname))
-    {
-        $errors[] = "First name is required.";
-    }
-    if (empty($lastname))
-    {
-        $errors[] = "Last name is required.";
-    }
-    if (empty($dob))
-    {
-        $errors[] = "Date of birth is required.";
-    }
-    if (empty($gender))
-    {
-        $errors[] = "Gender is required.";
-    }
-    if (empty($streetAddress))
-    {
-        $errors[] = "Street address is required.";
-    }
-    if (empty($suburbTown))
-    {
-        $errors[] = "Suburb/Town is required.";
-    }
-    if (empty($state))
-    {
-        $errors[] = "State is required.";
-    }
-    if (empty($postcode))
-    {
-        $errors[] = "Postcode is required.";
-    }
-    if (empty($email))
-    {
-        $errors[] = "Email address is required.";
-    }
-    if (empty($phone))
-    {
-        $errors[] = "Phone number is required.";
-    }
-    if (empty($jobReferenceNumber))
-    {
-        $errors[] = "Job reference number is required.";
-    }
-    //Format validation
-    if (!preg_match("/^[a-zA-Z]{1,20}$/",$firstname) && !empty($firstname))
-    {
-        $errors[] = "First name must be 1-20 alphabetic characters.";
-    }
-    if (!preg_match("/^[a-zA-Z]{1,20}$/",$lastname) && !empty($lastname))
-    {
-        $errors[] = "Last name must be 1-20 alphabetic characters.";
-    }
-    if (!preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $dob) && !empty($dob))
-    {
-        $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
-    }
-    if (!preg_match("/^\d{4}$/", $postcode) && !empty($postcode))
-    {
-        $errors[] = "Postcode must be 4 digits";
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($email))
-    {
-        $errors[] = "Invalid email address";
-    }
-    if (!preg_match("/^[0-9 ]{8,12}$/", $phone) && !empty($phone))
-    {
-        $errors[] = "Phone number must be 8-12 digits";
-    }
-    //redirect to error page if any errors are detected
-    if (!empty($errors))
-    {
-        $_SESSION['validation_errors'] = $errors;
-        header("Location: error.php");
-        exit();
-    }
-    $stmt = mysqli_prepare($conn,
-        "INSERT INTO eoi (
-            JobReferenceNumber, FirstName, LastName,
-            StreetAddress, SuburbTown, State, Postcode, EmailAddress,
-            PhoneNumber, Skill1, Skill2, Skill3, Skill4, Skill5, Skill6, Skill7,
-            Skill8, Skill9, Skill10, Skill11, Skill12, OtherSkills, Status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    );
-    mysqli_stmt_bind_param($stmt, 'sssssssssiiiiiiiiiiiiss',
-        $jobReferenceNumber, $firstname, $lastname,
-        $streetAddress, $suburbTown, $state, $postcode, $email,
-        $phone, $skills[1], $skills[2], $skills[3], $skills[4], $skills[5],
-        $skills[6], $skills[7], $skills[8], $skills[9], $skills[10],
-        $skills[11], $skills[12], $otherSkills, $status
-    );
-    if (mysqli_stmt_execute($stmt))
-    {
-        $eoiNumber = mysqli_insert_id($conn);
-        echo "<h2>Application Submitted Successfully!</h2>";
-        echo "<p>Your EOInumber is: <strong>$eoiNumber</strong></p>";
-    }
-    else
-    {
-        echo "<p>Error: " . mysqli_error($conn) . "</p>";
-    }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+require_once("settings.php");
+session_start();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage EOIs</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 { color: #1f3b6e; }
+        table, th, td {
+            border: 1px solid #aaa;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        table { width: 100%; margin-top: 20px; }
+        form { margin: 20px 0; padding: 10px; background: #f1f1f1; }
+        input, select { margin: 5px; padding: 5px; }
+        button { padding: 6px 12px; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Manage EOIs</h1>
+
+    <!-- 1. List All EOIs -->
+    <form method="post">
+        <button name="action" value="list_all">List All EOIs</button>
+    </form>
+
+    <!-- 2. Filter by Job Reference -->
+    <form method="post">
+        <label>Job Reference Number:</label>
+        <input type="text" name="jobRef">
+        <button name="action" value="filter_job">Search by Job Ref</button>
+        <button name="action" value="delete_job" style="background:purple; color:white;">Delete EOIs by Job Ref</button>
+    </form>
+
+    <!-- 3. Filter by Applicant Name -->
+    <form method="post">
+        <label>First Name:</label>
+        <input type="text" name="firstName">
+        <label>Last Name:</label>
+        <input type="text" name="lastName">
+        <button name="action" value="filter_name">Search by Name</button>
+    </form>
+
+    <!-- 5. Change Status -->
+    <form method="post">
+        <label>EOInumber:</label>
+        <input type="number" name="eoiNumber" required>
+        <label>New Status:</label>
+        <select name="newStatus">
+            <option value="New">New</option>
+            <option value="Current">Current</option>
+            <option value="Final">Final</option>
+        </select>
+        <button name="action" value="change_status">Update Status</button>
+    </form>
+
+<?php
+function displayEOIs($result) {
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table><tr>
+                <th>EOInumber</th><th>Job Ref</th><th>First Name</th><th>Last Name</th>
+                <th>Email</th><th>Phone</th><th>Status</th>
+              </tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>
+                    <td>{$row['EOInumber']}</td>
+                    <td>{$row['JobReferenceNumber']}</td>
+                    <td>{$row['FirstName']}</td>
+                    <td>{$row['LastName']}</td>
+                    <td>{$row['EmailAddress']}</td>
+                    <td>{$row['PhoneNumber']}</td>
+                    <td>{$row['Status']}</td>
+                  </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found.</p>";
+    }
+}
+
+// Handle Form Actions
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'])) {
+    $action = $_POST['action'];
+
+    switch ($action) {
+        case "list_all":
+            $query = "SELECT * FROM eoi";
+            $result = mysqli_query($conn, $query);
+            echo "<h2>All EOIs</h2>";
+            displayEOIs($result);
+            break;
+
+        case "filter_job":
+            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
+            $query = "SELECT * FROM eoi WHERE JobReferenceNumber = '$jobRef'";
+            $result = mysqli_query($conn, $query);
+            echo "<h2>EOIs for Job Reference: $jobRef</h2>";
+            displayEOIs($result);
+            break;
+
+        case "delete_job":
+            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
+            $delete = "DELETE FROM eoi WHERE JobReferenceNumber = '$jobRef'";
+            if (mysqli_query($conn, $delete)) {
+                echo "<p style='color:green;'>EOIs with Job Reference '$jobRef' deleted successfully.</p>";
+            } else {
+                echo "<p style='color:red;'>Error deleting EOIs.</p>";
+            }
+            break;
+
+        case "filter_name":
+            $first = mysqli_real_escape_string($conn, $_POST['firstName'] ?? '');
+            $last = mysqli_real_escape_string($conn, $_POST['lastName'] ?? '');
+
+            $conditions = [];
+            if (!empty($first)) $conditions[] = "FirstName = '$first'";
+            if (!empty($last))  $conditions[] = "LastName = '$last'";
+            if (count($conditions) > 0) {
+                $query = "SELECT * FROM eoi WHERE " . implode(" AND ", $conditions);
+                $result = mysqli_query($conn, $query);
+                echo "<h2>EOIs for Applicant: $first $last</h2>";
+                displayEOIs($result);
+            } else {
+                echo "<p style='color:red;'>Please provide at least a first or last name.</p>";
+            }
+            break;
+
+        case "change_status":
+            $eoiNumber = (int)$_POST['eoiNumber'];
+            $newStatus = mysqli_real_escape_string($conn, $_POST['newStatus']);
+
+            $update = "UPDATE eoi SET Status = '$newStatus' WHERE EOInumber = $eoiNumber";
+            if (mysqli_query($conn, $update)) {
+                echo "<p style='color:green;'>Status updated successfully for EOI #$eoiNumber.</p>";
+            } else {
+                echo "<p style='color:red;'>Failed to update status.</p>";
+            }
+            break;
+    }
+}
+mysqli_close($conn);
+?>
+
+</body>
+</html>
