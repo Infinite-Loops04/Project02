@@ -4,34 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Job Listings</title>
+<link rel="stylesheet" type="text/css" href="styles/Project1.css">
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 20px;
-  }
-  h2 {
-    text-align: center;
-  }
-  .filter-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  select, button {
-    padding: 8px;
-    font-size: 16px;
-  }
   table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   th, td {
     border: 1px solid #ccc;
-    padding: 12px;
+    padding: 8px;
     text-align: left;
   }
   th {
@@ -39,97 +20,95 @@
     background-color: #0073e6;
     color: white;
   }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  a {
+    color: #0073e6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
 
-<div class="filter-container">
-  <label for="filterJob">Job Title:</label>
-  <select id="filterJob" onchange="filterTable()">
-    <option value="">All</option>
-    <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
-    <option value="Ethical Hacker">Ethical Hacker</option>
-    <option value="Computer Forensic Analyst">Computer Forensic Analyst</option>
-    <option value="IT Security">IT Security</option>
-  </select>
+<h2>Job Listings</h2>
 
-  <label for="filterLocation">Location:</label>
-  <select id="filterLocation" onchange="filterTable()">
-    <option value="">All</option>
-    <option value="Melbourne">Melbourne</option>
-    <option value="Sydney">Sydney</option>
-    <option value="Brisbane">Brisbane</option>
-    <option value="Work from home">Work from home</option>
-</select>
-    <button onclick="filterTable()">search</button>
-</div>
-<?php
-require_once 'settings.php';
-$query = "SELECT title, location_1, salary_entry FROM jobs";
-$result = mysqli_query($conn, $query);
- if (isset($_GET['title']) || isset($_GET['location_1']) || isset($_GET['salary_entry'])) {
-    $title = $_GET['title'] ?? ''; 
-    $location = $_GET['location_1'] ?? '';
-    $salary = $_GET['salary_entry'] ?? '';
-    $query .= " WHERE title LIKE '%" . mysqli_real_escape_string($conn, $title) . "%' 
-                AND location_1 LIKE '%" . mysqli_real_escape_string($conn, $location) . "%' 
-                AND salary_entry LIKE '%" . mysqli_real_escape_string($conn, $salary) . "%'";
-} else {
-    $query .= " ORDER BY title ASC";
-}
-$result = mysqli_query($conn, $query);
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
-}
-if (mysqli_num_rows($result) > 0) {
-    echo "<table border='1' cellpadding='5' id='jobsTable'>";
-    echo "<tr><th>Job Title</th><th>Location</th><th>Entry Salary</th></tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td><a href='jobs.php?title=" . urlencode($row['title']) . "'>" . htmlspecialchars($row['title']) . "</a></td>";
-        echo "<td>" . htmlspecialchars($row['location_1']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['salary_entry']) . "</td>";
-        echo "</tr>";
-    }
-    echo "</table>";
-} else {
-    echo "No results found.";
-}
-mysqli_close($conn);
-?>
+<!-- Filter by Job Title -->
+<label for="filterJob">Filter by Job Title:</label>
+<input type="text" id="filterJob" placeholder="Enter job title" onkeyup="filterTable()">
 
+<!-- Filter by Location -->
+<label for="filterLocation">Filter by Location:</label>
+<input type="text" id="filterLocation" placeholder="Enter location" onkeyup="filterTable()">
+
+<!-- Table with job data -->
+<table id="jobsTable">
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">Job Title</th>
+      <th onclick="sortTable(1)">Location</th>
+      <th onclick="sortTable(2)">Salary Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="jobs.php?title=Cybersecurity%20Analyst">Cybersecurity Analyst</a></td>
+      <td><a href="jobs.php?title=Cybersecurity%20Analyst">Melbourne</a></td>
+      <td>$60,000-$90,000</td>
+    </tr>
+    <tr>
+      <td><a href="jobs.php?title=Ethical%20Hacker">Ethical Hacker</a></td>
+      <td><a href="jobs.php?title=Ethical%20Hacker">Sydney</a></td>
+      <td>$80,000 - $120,000</td>
+    </tr>
+    <tr>
+      <td><a href="jobs.php?title=Computer%20Forensic%20Analyst">Computer Forensic Analyst</a></td>
+      <td><a href="jobs.php?title=Computer%20Forensic%20Analyst">Brisbane</a></td>
+      <td>$70,000 - $100,000</td>
+    </tr>
+    <tr>
+      <td><a href="jobs.php?title=IT%20Security%20Engineer">IT Security Engineer</a></td>
+      <td><a href="jobs.php?title=IT%20Security%20Engineer">Work from home</a></td>
+      <td>$120,000 - $160,000</td>
+    </tr>
+  </tbody>
+</table>
 
 <script>
+// Sorting function
 function sortTable(n) {
   const table = document.getElementById("jobsTable");
-  let rows, switching, i, x, y, shouldSwitch, dir = "asc", switchcount = 0;
-  switching = true;
-
+  let switching = true;
+  let dir = "asc";
   while (switching) {
     switching = false;
-    rows = table.rows;
-    
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n].innerText.toLowerCase();
-      y = rows[i + 1].getElementsByTagName("TD")[n].innerText.toLowerCase();
-
-      if (n === 2) { // Handling salary sorting properly
-        x = parseInt(x.replace(/[$,]/g, ""));
-        y = parseInt(y.replace(/[$,]/g, ""));
-      }
-
-      if ((dir === "asc" && x > y) || (dir === "desc" && x < y)) {
-        shouldSwitch = true;
-        break;
+    const rows = table.rows;
+    for (let i = 1; i < (rows.length - 1); i++) {
+      let shouldSwitch = false;
+      let x = rows[i].getElementsByTagName("TD")[n];
+      let y = rows[i + 1].getElementsByTagName("TD")[n];
+      let xVal = x.innerText.toLowerCase();
+      let yVal = y.innerText.toLowerCase();
+      if (dir === "asc") {
+        if (xVal > yVal) {
+          shouldSwitch = true;
+          break;
+        }
+      } else {
+        if (xVal < yVal) {
+          shouldSwitch = true;
+          break;
+        }
       }
     }
     if (shouldSwitch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
-      switchcount++;
     } else {
-      if (switchcount === 0 && dir === "asc") {
+      if (dir === "asc") {
         dir = "desc";
         switching = true;
       }
@@ -137,20 +116,27 @@ function sortTable(n) {
   }
 }
 
+// Filter function
 function filterTable() {
-  const jobFilter = document.getElementById("filterJob").value.toLowerCase();
-  const locationFilter = document.getElementById("filterLocation").value.toLowerCase();
+  const inputJob = document.getElementById("filterJob").value.toLowerCase();
+  const inputLoc = document.getElementById("filterLocation").value.toLowerCase();
   const table = document.getElementById("jobsTable");
   const tr = table.getElementsByTagName("tr");
 
   for (let i = 1; i < tr.length; i++) {
     const tdJob = tr[i].getElementsByTagName("TD")[0];
     const tdLoc = tr[i].getElementsByTagName("TD")[1];
-
     if (tdJob && tdLoc) {
       const jobText = tdJob.innerText.toLowerCase();
       const locText = tdLoc.innerText.toLowerCase();
-      tr[i].style.display = (jobText.includes(jobFilter) && locText.includes(locationFilter)) ? "" : "none";
+      if (
+        jobText.includes(inputJob) && 
+        locText.includes(inputLoc)
+      ) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
     }
   }
 }
