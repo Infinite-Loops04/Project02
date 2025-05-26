@@ -107,6 +107,5 @@ $conn->close();
 </form>
 
 <h3>List EOIs for a specific position</h3>
-
-//enhanced manage page 
-
+</body>
+</html>
