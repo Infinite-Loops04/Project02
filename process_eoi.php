@@ -178,6 +178,7 @@
     {
         echo "<p>Error: " . mysqli_error($conn) . "</p>";
     }
+    echo '<button onclick="location.href=\'index.php\'">Return to Homepage</button>';
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 ?>

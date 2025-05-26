@@ -1,6 +1,11 @@
 <?php
 require_once("settings.php");
 session_start();
+// Redirect to login if not logged in
+if (!isset($_SESSION['manager_logged_in']) || $_SESSION['manager_logged_in'] !== true) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
