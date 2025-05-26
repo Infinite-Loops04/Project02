@@ -1,100 +1,151 @@
 <?php
-    Session_start();
-    require_once("settings.php");
-
-// Process form submissions
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['list_all'])) {
-        // List all EOIs
-        $sql = "SELECT * FROM eoi";
-        $result = $conn->query($sql);
-        if ($result) {
-            $result_html .= generateTable($result);
-        }
-    } elseif (isset($_POST['list_by_job'])) {
-        // List EOIs by job reference number
-        $jobRef = $conn->real_escape_string($_POST['job_reference_number']);
-        $sql = "SELECT * FROM eoi WHERE job_reference_number = '$jobRef'";
-        $result = $conn->query($sql);
-        if ($result) {
-            $result_html .= generateTable($result);
-        }
-    } elseif (isset($_POST['list_by_applicant'])) {
-        // List EOIs by applicant name
-        $firstName = $conn->real_escape_string($_POST['applicant_first_name']);
-        $lastName = $conn->real_escape_string($_POST['applicant_last_name']);
-        
-        $conditions = [];
-        if ($firstName) $conditions[] = "applicant_first_name LIKE '%$firstName%'";
-        if ($lastName) $conditions[] = "applicant_last_name LIKE '%$lastName%'";
-        if (count($conditions) > 0) {
-            $whereClause = implode(' AND ', $conditions);
-            $sql = "SELECT * FROM eoi WHERE $whereClause";
-            $result = $conn->query($sql);
-            if ($result) {
-                $result_html .= generateTable($result);
-            }
-        }
-    } elseif (isset($_POST['delete_by_job'])) {
-        // Delete EOIs by job reference number
-        $jobRef = $conn->real_escape_string($_POST['delete_job_reference_number']);
-        $sql = "DELETE FROM eoi WHERE job_reference_number = '$jobRef'";
-        if ($conn->query($sql) === TRUE) {
-            $message = "EOIs for job reference '$jobRef' deleted successfully.";
-        } else {
-            $message = "Error deleting EOIs: " . $conn->error;
-        }
-    } elseif (isset($_POST['change_status'])) {
-        // Change status of an EOI
-        $eoiId = $conn->real_escape_string($_POST['eoi_id']);
-        $newStatus = $conn->real_escape_string($_POST['new_status']);
-        $sql = "UPDATE eoi SET status = '$newStatus' WHERE id = '$eoiId'";
-        if ($conn->query($sql) === TRUE) {
-            $message = "EOI status updated successfully.";
-        } else {
-            $message = "Error updating status: " . $conn->error;
-        }
-    }
-}
-
-// Function to generate an HTML table from a result set
-function generateTable($result) {
-    $html = "<table border='1'><tr>";
-    // Fetch field names
-    while ($field = $result->fetch_field()) {
-        $html .= "<th>{$field->name}</th>";
-    }
-    $html .= "</tr>";
-    // Fetch rows
-    while ($row = $result->fetch_assoc()) {
-        $html .= "<tr>";
-        foreach ($row as $cell) {
-            $html .= "<td>{$cell}</td>";
-        }
-        $html .= "</tr>";
-    }
-    $html .= "</table>";
-    $result->free();
-    return $html;
-}
-
-$conn->close();
+require_once("settings.php");
+session_start();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>EOI Management</title>
+    <meta charset="UTF-8">
+    <title>Manage EOIs</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 { color: #1f3b6e; }
+        table, th, td {
+            border: 1px solid #aaa;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        table { width: 100%; margin-top: 20px; }
+        form { margin: 20px 0; padding: 10px; background: #f1f1f1; }
+        input, select { margin: 5px; padding: 5px; }
+        button { padding: 6px 12px; margin-left: 5px; }
+    </style>
 </head>
 <body>
-<h2>EOI Management</h2>
-<?php if ($message) echo "<p>$message</p>"; ?>
+    <h1>Manage EOIs</h1>
 
-<h3>List all EOIs</h3>
-<form method="post">
-    <button type="submit" name="list_all">List All EOIs</button>
-</form>
+    <!-- 1. List All EOIs -->
+    <form method="post">
+        <button name="action" value="list_all">List All EOIs</button>
+    </form>
 
-<h3>List EOIs for a specific position</h3>
+    <!-- 2. Filter by Job Reference -->
+    <form method="post">
+        <label>Job Reference Number:</label>
+        <input type="text" name="jobRef">
+        <button name="action" value="filter_job">Search by Job Ref</button>
+        <button name="action" value="delete_job" style="background:red; color:white;">Delete EOIs by Job Ref</button>
+    </form>
+
+    <!-- 3. Filter by Applicant Name -->
+    <form method="post">
+        <label>First Name:</label>
+        <input type="text" name="firstName">
+        <label>Last Name:</label>
+        <input type="text" name="lastName">
+        <button name="action" value="filter_name">Search by Name</button>
+    </form>
+
+    <!-- 5. Change Status -->
+    <form method="post">
+        <label>EOInumber:</label>
+        <input type="number" name="eoiNumber" required>
+        <label>New Status:</label>
+        <select name="newStatus">
+            <option value="New">New</option>
+            <option value="Current">Current</option>
+            <option value="Final">Final</option>
+        </select>
+        <button name="action" value="change_status">Update Status</button>
+    </form>
+
+<?php
+function displayEOIs($result) {
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table><tr>
+                <th>EOInumber</th><th>Job Ref</th><th>First Name</th><th>Last Name</th>
+                <th>Email</th><th>Phone</th><th>Status</th>
+              </tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>
+                    <td>{$row['EOInumber']}</td>
+                    <td>{$row['JobReferenceNumber']}</td>
+                    <td>{$row['FirstName']}</td>
+                    <td>{$row['LastName']}</td>
+                    <td>{$row['EmailAddress']}</td>
+                    <td>{$row['PhoneNumber']}</td>
+                    <td>{$row['Status']}</td>
+                  </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found.</p>";
+    }
+}
+
+// Handle Form Actions
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'])) {
+    $action = $_POST['action'];
+
+    switch ($action) {
+        case "list_all":
+            $query = "SELECT * FROM eoi";
+            $result = mysqli_query($conn, $query);
+            echo "<h2>All EOIs</h2>";
+            displayEOIs($result);
+            break;
+
+        case "filter_job":
+            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
+            $query = "SELECT * FROM eoi WHERE JobReferenceNumber = '$jobRef'";
+            $result = mysqli_query($conn, $query);
+            echo "<h2>EOIs for Job Reference: $jobRef</h2>";
+            displayEOIs($result);
+            break;
+
+        case "delete_job":
+            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
+            $delete = "DELETE FROM eoi WHERE JobReferenceNumber = '$jobRef'";
+            if (mysqli_query($conn, $delete)) {
+                echo "<p style='color:green;'>EOIs with Job Reference '$jobRef' deleted successfully.</p>";
+            } else {
+                echo "<p style='color:red;'>Error deleting EOIs.</p>";
+            }
+            break;
+
+        case "filter_name":
+            $first = mysqli_real_escape_string($conn, $_POST['firstName'] ?? '');
+            $last = mysqli_real_escape_string($conn, $_POST['lastName'] ?? '');
+
+            $conditions = [];
+            if (!empty($first)) $conditions[] = "FirstName = '$first'";
+            if (!empty($last))  $conditions[] = "LastName = '$last'";
+            if (count($conditions) > 0) {
+                $query = "SELECT * FROM eoi WHERE " . implode(" AND ", $conditions);
+                $result = mysqli_query($conn, $query);
+                echo "<h2>EOIs for Applicant: $first $last</h2>";
+                displayEOIs($result);
+            } else {
+                echo "<p style='color:red;'>Please provide at least a first or last name.</p>";
+            }
+            break;
+
+        case "change_status":
+            $eoiNumber = (int)$_POST['eoiNumber'];
+            $newStatus = mysqli_real_escape_string($conn, $_POST['newStatus']);
+
+            $update = "UPDATE eoi SET Status = '$newStatus' WHERE EOInumber = $eoiNumber";
+            if (mysqli_query($conn, $update)) {
+                echo "<p style='color:green;'>Status updated successfully for EOI #$eoiNumber.</p>";
+            } else {
+                echo "<p style='color:red;'>Failed to update status.</p>";
+            }
+            break;
+    }
+}
+mysqli_close($conn);
+?>
+
 </body>
 </html>
