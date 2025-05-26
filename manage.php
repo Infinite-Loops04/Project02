@@ -78,8 +78,8 @@ function displayEOIs($result) {
                     <td>{$row['PhoneNumber']}</td>
                     <td>{$row['Status']}</td>
                   </tr>";
+            echo "</table>";
         }
-        echo "</table>";
     } else {
         echo "<p>No records found.</p>";
     }
