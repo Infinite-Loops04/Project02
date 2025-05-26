@@ -80,7 +80,6 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</aside>";
     echo "<h2>" . htmlspecialchars($row['title']) . "</h2>"; // Job Title
     echo "<p>" . htmlspecialchars($row['description']) . "</p>"; // Job Description
-     $row['image'];
 
     // Key Responsibilities (assuming columns: responsibility1, responsibility2, ...)
     echo "<h3>Key Responsibilities</h3>";
