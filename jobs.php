@@ -144,8 +144,6 @@ if (mysqli_query($conn, $create_table_jobs)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
-
-// Insert sample job data
 $insert_job = "INSERT INTO jobs (
     title, description, responsibilities_1, responsibilities_2, responsibilities_3,
     skill_1, skill_2, skill_3, skill_4, skill_5,
