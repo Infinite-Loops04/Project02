@@ -117,7 +117,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</section>";
     }
 }
-if (mysqli_num_rows($check_esult) == 0) {
+if (mysqli_num_rows($check_result) == 0) {
     $creat_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
