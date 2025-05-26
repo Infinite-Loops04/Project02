@@ -249,7 +249,7 @@ INSERT INTO jobs (
     'Bachelor''s degree in Computer Science or IT',
     '2+ years in IT security',
     'Certifications: CISSP, CISM, CEH',
-    'images/itsecurity.png',
+    'images/Itsecurity.png',
     '$70,000 - $85,000',
     '$80,000 - $120,000',
     '$120,000 - $160,000'
