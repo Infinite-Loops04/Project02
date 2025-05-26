@@ -1,8 +1,9 @@
 <?php
-include 'settings.php';
-$sql = "SELECT title, description, responsibilities, skills, education_experience, salary_range, image FROM jobs";
-$result = $conn->query($sql);
-?>
+    require_once 'settings.php';
+    // Connect to the database
+    $query = "SELECT * FROM jobs";
+    $result = mysqli_query($conn, $query);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,9 +24,9 @@ $result = $conn->query($sql);
            <h1 id="page_title">CloudSpire Technologies</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="apply.html">Services</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="apply.php">Services</a></li>
                 </ul>
             </nav>
         </header>
@@ -67,167 +68,59 @@ $result = $conn->query($sql);
                 <li>Computer Forensic Analyst</li>
                 <li>IT Security Engineer</li>
             </ul>
-        </section>
-            
-            <section>
-            <aside class="jobsimage">
-            <img src="images/cybersecurity_analyst.png" alt ="CloudSpire Technologies">
-            </aside>
+</section>
+<?php 
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+    $imgpath =  htmlspecialchars($row['image']);
+    echo "<section>";
+    echo "<figure>";
+    echo "<aside class='jobsimage'>";
+    echo "<img src = \"$imgpath\" alt = \"Job Image\">";
+    echo "<figure>";
+    echo "</aside>";
+    echo "<h2>" . htmlspecialchars($row['title']) . "</h2>"; // Job Title
+    echo "<p>" . htmlspecialchars($row['description']) . "</p>"; // Job Description
+     $row['image'];
 
-            <h2>Cybersecurity Analyst</h2>
-            <p>Cybersecurity Analysts are responsible for monitoring and defending an organizations IT infrastructure from security threats. They assess vulnerabilities, implement security measures, and respond to potential breaches.</p>
-            <h3>key Responsibilities</h3> 
-                <ul>
-                    <li>Monitor network traffic for suspicious activity</li>
-                    <li>Conduct vulnerability assessments and penetration testing</li>
-                    <li>Implement security measures to protect sensitive data</li>
-                    <li>Respond to security incidents and breaches</li>
-                    <li>Develop and maintain security policies and procedures</li>
-                </ul>
-           <h3>Required skills</h3>
-                <ul>
-                    <li>Strong understanding of network protocols and security technologies</li>
-                    <li>Experience with security tools such as firewalls, intrusion detection systems, and antivirus software</li>
-                    <li>Knowledge of programming languages such as Python, Java, or C++</li>
-                    <li>Excellent problem-solving and analytical skills</li>
-                    <li>Strong communication and teamwork abilities</li>
-                </ul>
-            <h3>Education and Experience</h3>
-                <ul>
-                    <li>Bachelor's degree in Computer Science, Information Technology, or a related field</li>
-                    <li>2+ years of experience in cybersecurity or a related field</li>
-                    <li>Relevant certifications such as CISSP, CEH, or CompTIA Security+ are a plus</li>
-                </ul>
-            <h3>Salary range</h3>
-            <p>The salary for this position ranges from $70,000 to $90,000 per year, depending on experience and qualifications.</p>
-                    <ul>
-                        <li>Average Salary: $70,000 - $110,000 per year</li>
-                        <li>Entry-level: $60,000 - $75,000 per year</li>
-                        <li>Senior-level: $110,000 - $140,000 per year</li>
-                    </ul>
-            <a href="apply.html">Apply Now</a>
-        </section>
-        
-        <section>
-             <!-- The following job description for Ethical Hacker was generated using ChatGPT on 6 April 2025. 
-         I chose this job type because it reflects my passion for ethical hacking and securing systems. -->
-            <aside class="jobsimage">
-            <img src="images/ethicalhacker.png" alt ="CloudSpire Technologies">
-            </aside>
-            <h2>Ethical Hacker</h2>
-            <p>Ethical hackers, or penetration testers, are hired to attempt to hack into systems and networks to identify vulnerabilities before malicious hackers can exploit them. This role requires advanced knowledge of hacking techniques.</p>
-            <h3>key Responsibilities</h3>
-                <ul>
-                    <li>Perform penetration testing on systems and networks</li>
-                    <li>Discover and document vulnerabilities</li>
-                    <li>Provide recommendations for improving security posture</li>
-                    <li>Stay up-to-date with the latest hacking tools and techniques</li>
-                    <li>Collaborate with IT teams to implement security measures</li>
-                </ul>
-            <h3>Required skills</h3>
-                <ul>
-                    <li>Proficiency in programming languages like Python, Java, or C++</li>
-                    <li>In-depth knowledge of hacking techniques and tools</li>
-                    <li>Familiarity with security frameworks and protocols</li>
-                    <li>Strong analytical and problem-solving skills</li>
-                    <li>Excellent communication and teamwork abilities</li>
-                </ul>
-            <h3>Education and Experience</h3>
-                <ul>
-                    <li>Bachelor's degree in Computer Science, Information Technology, or a related field</li>
-                    <li>2+ years of experience in ethical hacking or a related field</li>
-                    <li>Relevant certifications such as CEH, OSCP, or GPEN are a plus</li>
-                </ul>
-            <h3>Salary range</h3>
-            <p>The salary for this position ranges from $80,000 to $120,000 per year, depending on experience and qualifications.</p>
-                <ul>
-                    <li>Average Salary: $80,000 - $120,000 per year</li>
-                    <li>Entry-level: $70,000 - $85,000 per year</li>
-                    <li>Senior-level: $120,000 - $160,000 per year</li>
-                </ul>
-            <a href="apply.html">Apply Now</a>
-        </section>
-        
-        <section> 
-         <!-- The following job description for Computer Forensic Analyst was generated using ChatGPT on 6 April 2025. 
-         I chose this job type because I am interested in investigating cybercrimes and digital forensics. this mainly because i wanna go for forensics want to get more information about that. -->
-            <aside class="jobsimage">
-            <img src="images/computerforensicanalyst.png" alt ="CloudSpire Technologies">
-            </aside>
-            <h2>Computer Forensic Analyst</h2>
-            <p>Computer Forensic Analysts investigate cybercrimes and recover digital evidence from electronic devices. They often collaborate with law enforcement to analyze and preserve evidence that can be used in court.</p>
-            <h3>key Responsibilities</h3>
-                <ul>
-                   <li>Collect and analyze digital evidence from computers and networks</li>
-                   <li>Preserve the integrity of evidence for legal proceedings</li>
-                   <li>Investigate cybercrimes and digital incidents</li>
-                   <li>Analyze evidence and provide reports for legal purposes</li>
-                   <li>Stay current with the latest forensic tools and techniques</li>
-               </ul>
-            <h3>Required skills</h3>
-                <ul>
-                    <li>Strong understanding of computer systems and networks</li>
-                    <li>Experience with forensic tools and techniques such as EnCase, FTK, or Autopsy</li>
-                    <li>Knowledge of data recovery and encryption</li>
-                    <li>Excellent analytical and problem-solving skills</li>
-                    <li>Strong communication and teamwork abilities</li>
-                </ul>
-            <h3>Education and Experience</h3>
-                <ul>
-                    <li>Bachelor's degree in Computer Science, Information Technology, or a related field</li>
-                    <li>2+ years of experience in computer forensics or a related field</li>
-                    <li>Relevant certifications such as CCE, CFCE, or EnCE are a plus</li>
-                </ul>
-            <h3>Salary range</h3>
-            <p>The salary for this position ranges from $70,000 to $100,000 per year, depending on experience and qualifications.</p>
-                <ul>
-                    <li>Average Salary: $70,000 - $100,000 per year</li>
-                    <li>Entry-level: $60,000 - $75,000 per year</li>
-                    <li>Senior-level: $100,000 - $120,000 per year</li>
-                </ul>
-            <a href="apply.html">Apply Now</a>
-        </section>
+    // Key Responsibilities (assuming columns: responsibility1, responsibility2, ...)
+    echo "<h3>Key Responsibilities</h3>";
+    echo "<ul>";
+    echo "<li>" . htmlspecialchars($row['responsibilities_1']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['responsibilities_2']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['responsibilities_3']) . "</li>";
+    echo "</ul>";
+      // Required Skills (assuming columns: skill1, skill2, ...)
+    echo "<h3>Required Skills</h3>";
+    echo "<ul>";
+    echo "<li>" . htmlspecialchars($row['skill_1']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['skill_2']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['skill_3']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['skill_4']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['skill_5']) . "</li>";
+    echo "</ul>";
 
-        <section>
-            <!-- The following job description for IT Security Engineer was generated using ChatGPT on 6 April 2025. 
-         I chose this job type because I am passionate about designing and implementing secure IT systems. -->
-         <aside class="jobsimage">
-            <img src="images/Itsecurity.png" alt ="CloudSpire Technologies">
-        </aside>
-            <h2>IT Security Engineer</h2>
-            <p>IT Security Engineers design and implement robust security systems to protect an organization's IT infrastructure. This includes developing security protocols, managing firewalls, and responding to security breaches.</p>
-            <h3>key Responsibilities</h3>
-                <ul>
-                    <li>Design and implement security systems and protocols</li>
-                    <li>Monitor network traffic for suspicious activity</li>
-                    <li>Manage firewalls, intrusion detection/prevention systems, and VPNs</li>
-                    <li>Conduct regular security audits and assessments</li>
-                    <li>Collaborate with IT teams to improve security posture</li>
-                    <li>Stay up-to-date with the latest security threats and technologies</li>
-                </ul>
-            <h3>Required skills</h3>
-                <ul>
-                    <li>Strong understanding of network protocols and systems administration</li>
-                    <li>Experience with security tools such as firewalls, IDS/IPS, and VPNs</li>
-                    <li>Knowledge of programming languages such as Python, Java, or C++</li>
-                    <li>Proficiency in operating systems and networking protocols</li>
-                    <li>Strong communication and teamwork abilities</li>
-                </ul>
-            <h3>Education and Experience</h3>
-                <ul>
-                    <li>Bachelor's degree in Computer Science, Information Technology, or a related field</li>
-                    <li>2+ years of experience in IT security or a related field</li>
-                    <li>Relevant certifications such as CISSP, CISM, or CEH are a plus</li>
-                </ul>
-            <h3>Salary range</h3>
-            <p>The salary for this position ranges from $80,000 to $120,000 per year, depending on experience and qualifications.</p>
-                <ul>
-                    <li>Average Salary: $80,000 - $120,000 per year</li>
-                    <li>Entry-level: $70,000 - $85,000 per year</li>
-                    <li>Senior-level: $120,000 - $160,000 per year</li>
-                </ul>
-            <a href="apply.html">Apply Now</a>
-        </section>
-         <?php include("footer.inc"); ?>
+    // Education and Experience (assuming columns: education1, education2, ...)
+    echo "<h3>Education and Experience</h3>";
+    echo "<ul>";
+    echo "<li>" . htmlspecialchars($row['education_1']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['education_2']) . "</li>";
+    echo "<li>" . htmlspecialchars($row['education_3']) . "</li>";
+    echo "</ul>";
+
+    // Salary Range
+    echo "<h3>Salary Range</h3>";
+    echo "<ul>";
+    echo "<li>Entry-level: " . $row['salary_entry'] . "</li>";
+    echo "<li>Mid-level: " . $row['salary_mid'] . "</li>";
+    echo "<li>Senior-level: " . $row['salary_senior'] . "</li>";
+    echo "</ul>";
+    echo "<a href='apply.php'>Apply Now</a>";
+    echo "</section>";
+    }
+}
+mysqli_close($conn);
+?>
+        include 'footer.inc';
 </body>
 </html>
