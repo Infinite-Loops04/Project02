@@ -67,6 +67,8 @@
             </ul>
 </section>
 <?php 
+$table_check_query = "SHOW TABLES LIKE 'jobs'";
+$check_result = mysqli_query($conn, $table_check_query);
 if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
     $imgpath =  htmlspecialchars($row['image']);
@@ -115,7 +117,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</section>";
     }
 }
-if (mysqli_num_rows($result) == 0) {
+if (mysqli_num_rows($check_esult) == 0) {
     $creat_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
