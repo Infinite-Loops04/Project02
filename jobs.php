@@ -144,39 +144,31 @@ if (mysqli_query($conn, $create_table_jobs)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
-
-// Insert sample job data
 $insert_job = "INSERT INTO jobs (
-    title, description, responsibilities_1, responsibilities_2, responsibilities_3,
-    skill_1, skill_2, skill_3, skill_4, skill_5,
-    education_1, education_2, education_3,
-    image, salary_entry, salary_mid, salary_senior
-) VALUES (
-    'Cybersecurity Analyst',
-    'Protects systems and networks from digital attacks and unauthorized access.',
-    'Monitor network traffic for suspicious activity.',
-    'Conduct vulnerability assessments and penetration testing.',
-    'Implement security measures to protect sensitive data.',
-    'Strong understanding of network protocols and security technologies.',
-    'Experience with security tools such as firewalls, intrusion detection systems, and antivirus software.',
-    'Knowledge of programming languages such as Python, Java, or C++',
-    'Excellent problem-solving and analytical skills',
-    'Strong communication and teamwork abilities',
-    'Bachelor's degree in Computer Science, Information Technology, or a related field',
-    '2+ years of experience in cybersecurity or a related field',
-    'Relevant certifications such as CISSP, CEH, or CompTIA Security+ are a plus',
-    'images/cybersecurity_analyst.png',
-    '$60,000',
-    '$75,000',
-    '$90,000'
-);
-INSERT INTO jobs (
     title, description,
     responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
     skill_1, skill_2, skill_3, skill_4, skill_5,
     education_1, education_2, education_3,
     image, salary_entry, salary_mid, salary_senior
-) VALUES
+) VALUES 
+(
+    'Cybersecurity Analyst',
+    'Protects systems and networks from digital attacks and unauthorized access.',
+    'Monitor network traffic for suspicious activity.',
+    'Conduct vulnerability assessments and penetration testing.',
+    'Implement security measures to protect sensitive data.',
+    '', '',
+    'Strong understanding of network protocols and security technologies.',
+    'Experience with security tools such as firewalls, intrusion detection systems, and antivirus software.',
+    'Knowledge of programming languages such as Python, Java, or C++',
+    'Excellent problem-solving and analytical skills',
+    'Strong communication and teamwork abilities',
+    'Bachelor''s degree in Computer Science, Information Technology, or a related field',
+    '2+ years of experience in cybersecurity or a related field',
+    'Relevant certifications such as CISSP, CEH, or CompTIA Security+ are a plus',
+    'images/cybersecurity_analyst.png',
+    '$60,000', '$75,000', '$90,000'
+),
 (
     'Ethical Hacker',
     'Ethical hackers, or penetration testers, are hired to hack into systems and networks to find vulnerabilities before malicious hackers do.',
@@ -194,17 +186,8 @@ INSERT INTO jobs (
     '2+ years experience in ethical hacking',
     'Certifications: CEH, OSCP, GPEN',
     'images/ethicalhacker.png',
-    '$70,000 - $85,000',
-    '$80,000 - $120,000',
-    '$120,000 - $160,000'
+    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000'
 ),
-INSERT INTO jobs (
-    title, description,
-    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
-    skill_1, skill_2, skill_3, skill_4, skill_5,
-    education_1, education_2, education_3,
-    image, salary_entry, salary_mid, salary_senior
-) VALUES
 (
     'Computer Forensic Analyst',
     'Investigates cybercrimes and recovers digital evidence from electronic devices.',
@@ -222,17 +205,8 @@ INSERT INTO jobs (
     '2+ years in computer forensics',
     'Certifications: CCE, CFCE, EnCE',
     'images/computerforensicanalyst.png',
-    '$60,000 - $75,000',
-    '$70,000 - $100,000',
-    '$100,000 - $120,000'
+    '$60,000 - $75,000', '$70,000 - $100,000', '$100,000 - $120,000'
 ),
-INSERT INTO jobs (
-    title, description,
-    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
-    skill_1, skill_2, skill_3, skill_4, skill_5,
-    education_1, education_2, education_3,
-    image, salary_entry, salary_mid, salary_senior
-) VALUES
 (
     'IT Security Engineer',
     'Designs and implements robust security systems to protect IT infrastructure.',
@@ -250,11 +224,8 @@ INSERT INTO jobs (
     '2+ years in IT security',
     'Certifications: CISSP, CISM, CEH',
     'images/Itsecurity.png',
-    '$70,000 - $85,000',
-    '$80,000 - $120,000',
-    '$120,000 - $160,000'
-);
-";
+    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000'
+)";
 if (mysqli_query($conn, $insert_job)) {
     echo "Sample job data inserted successfully.<br>";
 } else {
