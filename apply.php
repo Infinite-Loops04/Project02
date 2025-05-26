@@ -9,10 +9,10 @@
         <link rel="stylesheet" type="text/css" href="styles/Project1.css">
         <title>CloudSpire Technologies | step towards your new life</title>
     </head>
+      <?php include("header.inc"); ?>
     <body id="apply_body">
         <header id="apply_header">
             <h1>CloudSpire Technologies</h1>
-            <!--menu to go to other pages of the website-->
             <nav id="apply_nav">
                 <ul>
                     <li><a class="menu" href="index.php">Home</a></li>
@@ -22,9 +22,9 @@
             </nav>
         </header>
         <main id="form_body">
-            <!--sending the entered information to the below address-->
+
             <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
-                <!--collects the personal information of the applicant-->
+                
                 <div id="applicant_details">
                     <h2>Applicant Details</h2>
                     <p><label for ="first_name">First Name</label>
@@ -35,8 +35,7 @@
                     <p><label for="dob">Date of Birth</label>
                         <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Enter a valid date"><!--collect the date of birth of applicant-->
                     </p>
-                    <fieldset id="gender"><!--collect the gender of applicant in terms of a radio input-->
-                        <legend>Gender</legend>
+                    <fieldset id="gender">
                         <p>
                             <input type="radio" name="gender" id="male" value="male" required="required">
                             <label for="male">Male</label>
@@ -55,7 +54,7 @@
                         </p>
                     </fieldset>
                 </div >
-                <!--collects the address of the applicant-->
+              
                 <div id="applicant_address">
                     <h2>Applicant Address</h2>
                     <p>
@@ -134,5 +133,6 @@
                 <a href="https://www.linkedin.com/company/cloudspiretech">LinkedIn</a>
             </p>
         </footer>
+         <?php include("footer.inc"); ?>
     </body>
 </html>
