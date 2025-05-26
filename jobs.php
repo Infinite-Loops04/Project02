@@ -17,7 +17,7 @@
     </head>
     <body>
         <header id="header">
-              <?php include("header.inc"); ?>
+            <?php include("header.inc"); ?>
            <img id="logo" src="images/cloudspire_logo.png" alt="CloudSpire Logo">
             <nav>
                 <ul>

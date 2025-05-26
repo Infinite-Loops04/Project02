@@ -30,11 +30,11 @@ session_start();
         <button name="action" value="list_all">List All EOIs</button>
     </form>
 
-    <!-- 2. Filter by Job Reference -->
+    <!-- 2. Filter by Job Title -->
     <form method="post">
-        <label>Job Reference Number:</label>
-        <input type="text" name="jobRef">
-        <button name="action" value="filter_job">Search by Job Ref</button>
+        <label>Job Title:</label>
+        <input type="text" name="jobTitle">
+        <button name="action" value="filter_job">Search by Job Title</button>
         <button name="action" value="delete_job" style="background:purple; color:white;">Delete EOIs by Job Ref</button>
     </form>
 
