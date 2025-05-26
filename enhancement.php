@@ -61,12 +61,26 @@
     <option value="Brisbane">Brisbane</option>
     <option value="Work from home">Work from home</option>
 </select>
-    <button onclick="filterTable()">Filter</button>
+    <button onclick="filterTable()">search</button>
 </div>
 <?php
 require_once 'settings.php';
 $query = "SELECT title, location_1, salary_entry FROM jobs";
 $result = mysqli_query($conn, $query);
+ if (isset($_GET['title']) || isset($_GET['location_1']) || isset($_GET['salary_entry'])) {
+    $title = $_GET['title'] ?? ''; 
+    $location = $_GET['location_1'] ?? '';
+    $salary = $_GET['salary_entry'] ?? '';
+    $query .= " WHERE title LIKE '%" . mysqli_real_escape_string($conn, $title) . "%' 
+                AND location_1 LIKE '%" . mysqli_real_escape_string($conn, $location) . "%' 
+                AND salary_entry LIKE '%" . mysqli_real_escape_string($conn, $salary) . "%'";
+} else {
+    $query .= " ORDER BY title ASC";
+}
+$result = mysqli_query($conn, $query);
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
 if (mysqli_num_rows($result) > 0) {
     echo "<table border='1' cellpadding='5' id='jobsTable'>";
     echo "<tr><th>Job Title</th><th>Location</th><th>Entry Salary</th></tr>";
