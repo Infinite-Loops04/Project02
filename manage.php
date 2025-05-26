@@ -1,6 +1,7 @@
 <?php
 require_once("settings.php");
 session_start();
+require_once("process_eoi.php")
 ?>
 
 <!DOCTYPE html>
