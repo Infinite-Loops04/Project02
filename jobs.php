@@ -138,17 +138,26 @@ if (mysqli_num_rows($check_result) == 0) {
         salary_senior VARCHAR(50),
         image VARCHAR(255)
     )";
-    if (mysqli_query($conn, $creat_table_jobs)) {
-        echo "<p>Jobs table created successfully.</p>";
-    } else {
-        echo "<p>Error creating jobs table: " . mysqli_error($conn) . "</p>";
-    }
-    $insert_jobs = "INSERT INTO jobs (title, description, responsibilities_1, responsibilities_2, responsibilities_3, skill_1, skill_2, skill_3, skill_4, skill_5, education_1, education_2, education_3, salary_entry, salary_mid, salary_senior, image) VALUES
-    ('Cybersecurity Analyst', 'Responsible for protecting an organization's computer systems and networks from cyber threats.', 'Monitor network traffic for suspicious activity', 'Conduct vulnerability assessments and penetration testing', 'Develop and implement security policies and procedures', 'Knowledge of network protocols and security technologies', 'Experience with security information and event management (SIEM) tools', 'Strong analytical and problem-solving skills', 'Excellent communication skills', 'Bachelor\'s degree in Computer Science or related field', '2+ years of experience in cybersecurity', 'Certified Information Systems Security Professional (CISSP) preferred', '$60,000 - $80,000', '$80,000 - $100,000', '$100,000 - $120,000', 'images/cybersecurity_analyst.png')
-        echo "<p>Sample job data inserted successfully.</p>";
-    } else {
-        echo "<p>Error inserting sample job data: " . mysqli_error($conn) . "</p>";
-    }  
+    mysqli_query($conn, $creat_table_jobs);             
+// Insert sample data into the jobs table
+INSERT INTO jobs (
+    title, description, responsibilities, education_experience, image,
+    salary_entry, salary_mid, salary_senior,
+    skill_1, skill_2, skill_3, skill_4, skill_5,
+    education_1, education_2, education_3,
+    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5
+)
+VALUES (
+    'Cybersecurity Analyst',
+    'Protects systems and networks from cyber threats.',
+    'Monitor, detect, and respond to cyber incidents.',
+    'Bachelor’s in IT or Cybersecurity, 2+ years experience.',
+    'images/cybersecurity.png',
+    '$60,000', '$75,000', '$90,000',
+    'Network Security', 'Penetration Testing', 'Firewalls', 'SIEM', 'Encryption',
+    'Bachelor of IT', 'Cert. in Cybersecurity', 'Hands-on lab training',
+    'Monitor threats', 'Incident response', 'Risk assessment', 'Security audits', 'Threat hunting'
+);
 } 
     mysqli_close($conn);
     include 'footer.inc';
