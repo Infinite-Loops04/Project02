@@ -179,6 +179,6 @@ if (mysqli_query($conn, $insert_job)) {
 
 mysqli_close($conn);
     include 'footer.inc';
-?.
+?>
 </body>
 </html>
