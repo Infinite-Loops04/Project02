@@ -97,20 +97,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'])) {
             break;
 
         case "filter_job":
-            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
-            $query = "SELECT * FROM eoi WHERE JobReferenceNumber = '$jobRef'";
+            $jobTitle = mysqli_real_escape_string($conn, $_POST['jobTitle']);
+            $query = "SELECT * FROM eoi WHERE JobTitle = '$jobTitle'";
             $result = mysqli_query($conn, $query);
-            echo "<h2>EOIs for Job Reference: $jobRef</h2>";
+            echo "<h2>EOIs for Job Title: $jobTitle</h2>";
             displayEOIs($result);
             break;
 
         case "delete_job":
-            $jobRef = mysqli_real_escape_string($conn, $_POST['jobRef']);
+            $jobTitle = mysqli_real_escape_string($conn, $_POST['jobTitle']);
             $delete = "DELETE FROM eoi WHERE JobReferenceNumber = '$jobRef'";
             if (mysqli_query($conn, $delete)) {
-                echo "<p style='color:green;'>EOIs with Job Reference '$jobRef' deleted successfully.</p>";
+                echo "<p style='color:green;'>EOIs with Job Title '$jobTitle' deleted successfully.</p>";
             } else {
-                echo "<p style='color:red;'>Error deleting EOIs.</p>";
+                echo "<p style='color:purple;'>Error deleting EOIs.</p>";
             }
             break;
 
