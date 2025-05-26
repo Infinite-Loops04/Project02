@@ -119,7 +119,10 @@
         <title>CloudSpire Careers | pursue your dreams</title>
     </head>
     <body>
-        <?php include("header.inc"); ?>
+        <header id="header">
+            <?php include("header.inc"); 
+            require_once "enhancement.php"?>
+        </header>
         <main id="welcome">
             <aside class="jobsimage">
                 <img src="images/careers.png" alt="CloudSpire Technologies">
@@ -205,6 +208,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "<li>Senior-level: " . $row['salary_senior'] . "</li>";
     echo "</ul>";
     echo "<a href='apply.php'>Apply Now</a>";
+    echo "<h4>Location: " . htmlspecialchars($row['location_1']) . "</h4>"; // Job Location
     echo "</section>";
     }
 }
