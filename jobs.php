@@ -131,6 +131,7 @@ $create_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
     salary_entry VARCHAR(50),
     salary_mid VARCHAR(50),
     salary_senior VARCHAR(50)
+    Location_1 VARCHAR(255),
 )";
 
 if (mysqli_query($conn, $create_table_jobs)) {
@@ -143,7 +144,7 @@ $insert_job = "INSERT INTO jobs (
     responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
     skill_1, skill_2, skill_3, skill_4, skill_5,
     education_1, education_2, education_3,
-    image, salary_entry, salary_mid, salary_senior
+    image, salary_entry, salary_mid, salary_senior, location_1
 ) VALUES 
 (
     'Cybersecurity Analyst',
@@ -161,7 +162,7 @@ $insert_job = "INSERT INTO jobs (
     '2+ years of experience in cybersecurity or a related field',
     'Relevant certifications such as CISSP, CEH, or CompTIA Security+ are a plus',
     'images/cybersecurity_analyst.png',
-    '$60,000', '$75,000', '$90,000'
+    '$60,000', '$75,000', '$90,000', 'Melbourne'
 ),
 (
     'Ethical Hacker',
@@ -180,7 +181,7 @@ $insert_job = "INSERT INTO jobs (
     '2+ years experience in ethical hacking',
     'Certifications: CEH, OSCP, GPEN',
     'images/ethicalhacker.png',
-    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000'
+    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000', 'Sydney'
 ),
 (
     'Computer Forensic Analyst',
@@ -199,7 +200,7 @@ $insert_job = "INSERT INTO jobs (
     '2+ years in computer forensics',
     'Certifications: CCE, CFCE, EnCE',
     'images/computerforensicanalyst.png',
-    '$60,000 - $75,000', '$70,000 - $100,000', '$100,000 - $120,000'
+    '$60,000 - $75,000', '$70,000 - $100,000', '$100,000 - $120,000', 'Brisbane'
 ),
 (
     'IT Security Engineer',
@@ -218,7 +219,7 @@ $insert_job = "INSERT INTO jobs (
     '2+ years in IT security',
     'Certifications: CISSP, CISM, CEH',
     'images/Itsecurity.png',
-    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000'
+    '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000', 'Work from home'
 )";
 
 
