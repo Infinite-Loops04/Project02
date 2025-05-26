@@ -1,7 +1,5 @@
 <!-- footer.inc -->
-<footer id="index_footer">
-    <p><a href="mailto:info@cloudspire.com.au" class="button">info@cloudspire.com.au</a></p>
-    <p><a href="https://github.com/Infinite-Loops04/Project1" class="button">GitHub</a></p>
-    <p><a href="https://infiniteloops04.atlassian.net/jira/software/projects/SCRUM/summary" class="button">Jira Project</a></p>
-</footer>
+    <footer id="index_footer">
+    <p>View our project on <a href="https://your-jira-project-link.com" target="_blank">Jira</a></p> <!-- Footer text with external link (opens in new tab) -->
+  </footer>
 

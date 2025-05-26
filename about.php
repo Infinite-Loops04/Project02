@@ -7,6 +7,7 @@
   <title>Team behind Cloudspire Technologies</title>
   <link rel="stylesheet" type="text/css" href="styles/Project1.css">
 </head>
+  <?php include("header.inc"); ?>
 <body id="about_body">
   <!-- Header section with navigation -->
   <header id="about_header">
@@ -54,11 +55,11 @@
     </div>
   </section>
   
-  <!-- Main content section -->
+
   <main>
-    <!-- About intro section with student information -->
+    
     <section class="about-intro">
-        <h1>About Our Team</h1> <!-- Section heading -->          
+        <h1>About Our Team</h1>           
         <ul class="student-id-list"> <!-- Sidebar with student information -->
             <li><strong>Group Name:</strong> Infinite Loops</li> <!-- Group name with bold label -->
             <li><strong>Class:</strong> Wednesday 4:30-6:30 pm</li> <!-- Class time with bold label -->
@@ -99,32 +100,32 @@
         <!-- Table showing team member interests and skills -->
         <table class="interests-table">
             <caption>Team Member Skills and Interests</caption> <!-- Table caption -->
-            <thead> <!-- Table header row group -->
+            <thead> 
                 <tr>
-                    <th>Member</th> <!-- Column header -->
-                    <th>Hobbies</th> <!-- Column header -->
-                    <th>Career Goals</th> <!-- Column header -->
+                    <th>Member</th> 
+                    <th>Hobbies</th> 
+                    <th>Career Goals</th>
                 </tr>
             </thead>
-            <tbody> <!-- Table body row group -->
-                <tr> <!-- Table row -->
-                    <td>Manroop</td> <!-- Table cell with member name -->
-                    <td>Gaming, Photography</td> <!-- Table cell with hobbies -->
-                    <td>Game Developer</td> <!-- Table cell with career goal -->
+            <tbody>
+                <tr>
+                    <td>Manroop</td> 
+                    <td>Gaming, Photography</td> 
+                    <td>Game Developer</td> 
                 </tr>
-                <tr> <!-- Table row -->
-                    <td>Viresh</td> <!-- Table cell with member name -->
-                    <td>Programming, Chess</td> <!-- Table cell with hobbies -->
-                    <td>Full-stack Developer</td> <!-- Table cell with career goal -->
+                <tr>
+                    <td>Viresh</td>
+                    <td>Programming, Chess</td> 
+                    <td>Full-stack Developer</td>
                 </tr>
                 <tr> <!-- Table row -->
                     <td>Ishita</td> <!-- Table cell with member name -->
-                    <td rowspan="2">Travelling, Music</td> <!-- Table cell spanning 2 rows (shared hobby) -->
-                    <td>Cybersecurity Analyst</td> <!-- Table cell with career goal -->
+                    <td rowspan="2">Travelling, Music</td> 
+                    <td>Cybersecurity Analyst</td> 
                 </tr>
-                <tr> <!-- Table row -->
-                    <td>Zainab</td> <!-- Table cell with member name -->
-                    <td>Software Engineer</td> <!-- Table cell with career goal -->
+                <tr> 
+                    <td>Zainab</td>
+                    <td>Software Engineer</td> 
                 </tr>
             </tbody>
         </table>
@@ -148,5 +149,6 @@
   <footer id="about_footer">
     <p>View our project on <a href="https://your-jira-project-link.com" target="_blank">Jira</a></p> <!-- Footer text with external link (opens in new tab) -->
   </footer>
+   <?php include("footer.inc"); ?>
 </body>
 </html>

@@ -17,6 +17,7 @@
     </head>
     <body>
         <header id="header">
+              <?php include("header.inc"); ?>
            <img id="logo" src="images/cloudspire_logo.png" alt="CloudSpire Logo">
             <h1 class="tagline">Securing Tomorrow's Digital Landscape, Today.</h1>
             <p class="tagline">Pursue your dreams with CloudSpire Technologies</p>
