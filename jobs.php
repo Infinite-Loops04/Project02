@@ -117,50 +117,68 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</section>";
     }
 }
-if (mysqli_num_rows($check_result) == 0) {
-    $creat_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        description TEXT NOT NULL,
-        responsibilities_1 VARCHAR(255),
-        responsibilities_2 VARCHAR(255),
-        responsibilities_3 VARCHAR(255),
-        skill_1 VARCHAR(255),
-        skill_2 VARCHAR(255),
-        skill_3 VARCHAR(255),
-        skill_4 VARCHAR(255),
-        skill_5 VARCHAR(255),
-        education_1 VARCHAR(255),
-        education_2 VARCHAR(255),
-        education_3 VARCHAR(255),
-        salary_entry VARCHAR(50),
-        salary_mid VARCHAR(50),
-        salary_senior VARCHAR(50),
-        image VARCHAR(255)
-    )";
-    mysqli_query($conn, $creat_table_jobs);             
-// Insert sample data into the jobs table
-INSERT INTO jobs (
-    title, description, responsibilities, education_experience, image,
-    salary_entry, salary_mid, salary_senior,
+// Create the jobs table
+$create_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    description TEXT NOT NULL,
+    responsibilities_1 VARCHAR(255),
+    responsibilities_2 VARCHAR(255),
+    responsibilities_3 VARCHAR(255),
+    skill_1 VARCHAR(255),
+    skill_2 VARCHAR(255),
+    skill_3 VARCHAR(255),
+    skill_4 VARCHAR(255),
+    skill_5 VARCHAR(255),
+    education_1 VARCHAR(255),
+    education_2 VARCHAR(255),
+    education_3 VARCHAR(255),
+    image VARCHAR(255),
+    salary_entry VARCHAR(50),
+    salary_mid VARCHAR(50),
+    salary_senior VARCHAR(50)
+)";
+
+if (mysqli_query($conn, $create_table_jobs)) {
+    echo "Jobs table created successfully.<br>";
+} else {
+    echo "Error creating table: " . mysqli_error($conn);
+}
+
+// Insert sample job data
+$insert_job = "INSERT INTO jobs (
+    title, description, responsibilities_1, responsibilities_2, responsibilities_3,
     skill_1, skill_2, skill_3, skill_4, skill_5,
     education_1, education_2, education_3,
-    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5
-)
-VALUES (
+    image, salary_entry, salary_mid, salary_senior
+) VALUES (
     'Cybersecurity Analyst',
-    'Protects systems and networks from cyber threats.',
-    'Monitor, detect, and respond to cyber incidents.',
-    'Bachelor’s in IT or Cybersecurity, 2+ years experience.',
+    'Protects systems and networks from digital attacks and unauthorized access.',
+    'Monitor network traffic for suspicious activity.',
+    'Respond to cyber threats in real time.',
+    'Develop and implement security policies.',
+    'Firewall Management',
+    'Incident Response',
+    'SIEM Tools',
+    'Penetration Testing',
+    'Encryption',
+    'Bachelor of Information Technology',
+    'Certified Ethical Hacker (CEH)',
+    'Hands-on Cyber Lab Experience',
     'images/cybersecurity.png',
-    '$60,000', '$75,000', '$90,000',
-    'Network Security', 'Penetration Testing', 'Firewalls', 'SIEM', 'Encryption',
-    'Bachelor of IT', 'Cert. in Cybersecurity', 'Hands-on lab training',
-    'Monitor threats', 'Incident response', 'Risk assessment', 'Security audits', 'Threat hunting'
-);
-} 
-    mysqli_close($conn);
+    '$60,000',
+    '$75,000',
+    '$90,000'
+)";
+
+if (mysqli_query($conn, $insert_job)) {
+    echo "Sample job inserted successfully.";
+} else {
+    echo "Error inserting job: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
     include 'footer.inc';
-?>
+?.
 </body>
 </html>
