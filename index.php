@@ -12,7 +12,9 @@
 </head>
 <body id="index_body">
 
+
     <?php include("header.inc"); ?>
+
 
     <main>
         <section class="hero">
@@ -22,6 +24,7 @@
                 <a href="jobs.php" class="button"><strong>Explore Job Opportunities</strong></a>
             </div>
         </section>
+
 
         <section id="aboutng" class="company-description">
             <h2>About Cloudspire</h2>
@@ -42,6 +45,7 @@
         </section>
     </main>
 
+
     <div>
         <section id="types-of-job-opportunities">
             <h1>The types of job opportunities provided:</h1>
@@ -56,9 +60,12 @@
         </section>
     </div>
 
+
     <hr>
 
+
     <?php include("footer.inc"); ?>
+
 
 </body>
 </html>

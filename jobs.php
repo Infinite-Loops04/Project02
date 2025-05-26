@@ -155,6 +155,8 @@ if (mysqli_num_rows($result) == 0) {
         echo "<p>Error inserting sample job data: " . mysqli_error($conn) . "</p>";
     }   
     mysqli_close($conn);
-       <?php include 'footer.inc'; ?>
+    include 'footer.inc'; 
+}
+?>
 </body>
 </html>
