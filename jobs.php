@@ -254,10 +254,11 @@ INSERT INTO jobs (
     '$80,000 - $120,000',
     '$120,000 - $160,000'
 );
+";
 if (mysqli_query($conn, $insert_job)) {
-    echo "Sample job inserted successfully.";
+    echo "Sample job data inserted successfully.<br>";
 } else {
-    echo "Error inserting job: " . mysqli_error($conn);
+    echo "Error inserting sample data: " . mysqli_error($conn);
 }
 
 mysqli_close($conn);
