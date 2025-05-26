@@ -648,7 +648,7 @@ input[type="submit"]:hover,input[type="reset"]:hover {
 #apply_footer a:hover {
     text-decoration: underline;
 }
-#index_body{
+body{
     background: url(images/image.png);
 }
 #index_footer{
