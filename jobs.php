@@ -19,7 +19,14 @@
     <body>
         <header id="header">
             <?php include("header.inc"); ?>
-            <?php require_once 'enhancement.php'; ?>
+           <img id="logo" src="images/cloudspire_logo.png" alt="CloudSpire Logo">
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="apply.php">Services</a></li>
+                </ul>
+            </nav>
         </header>
         <main id="welcome">
             <aside class="jobsimage">
