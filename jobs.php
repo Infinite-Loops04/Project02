@@ -17,7 +17,7 @@
         <title>CloudSpire Careers | pursue your dreams</title>
     </head>
     <body>
-        <?php include("header.inc"); ?>
+        
         <header id="header">
             <?php include("header.inc");?>
         </header>
