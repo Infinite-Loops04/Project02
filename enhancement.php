@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="styles/Project1.css">
 <style>
   table {
+    background-color: #f2f2f2;
     width: 100%;
     border-collapse: collapse;
   }
@@ -30,11 +31,12 @@
   a:hover {
     text-decoration: underline;
   }
+  #jobsTable {
+    display: none
+  }
 </style>
 </head>
 <body>
-
-<h2>Job Listings</h2>
 
 <!-- Filter by Job Title -->
 <label for="filterJob">Filter by Job Title:</label>
