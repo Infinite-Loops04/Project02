@@ -7,22 +7,94 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/Project1.css">
     <title>Manage EOIs</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        h2 { color: #1f3b6e; }
+        /* Manage EOIs Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #1f3b6e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: inline-block;
+            min-width: 120px;
+            font-weight: bold;
+        }
+
+        form input, form select, form button {
+            margin: 10px 5px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #003366;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0055aa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
         table, th, td {
             border: 1px solid #aaa;
-            border-collapse: collapse;
-            padding: 8px;
         }
-        table { width: 100%; margin-top: 20px; }
-        form { margin: 20px 0; padding: 10px; background: #f1f1f1; }
-        input, select { margin: 5px; padding: 5px; }
-        button { padding: 6px 12px; margin-left: 5px; }
+
+        th {
+            background-color: #1f3b6e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
+    <?php include("header.inc"); ?>
     <h1>Manage EOIs</h1>
 
     <!-- 1. List All EOIs -->
@@ -32,7 +104,7 @@ session_start();
 
     <!-- 2. Filter by Job Reference Number -->
     <form method="post">
-        <label>Job Title:</label>
+        <label>Job Reference Number:</label>
         <select name="job_ref_no" id="job_ref_no">
             <option value="">Please select your preferred Position</option>
             <option value="cfa-2025-63">Computer Forensic Analyst(CFA-2025-63)</option>
@@ -66,6 +138,22 @@ session_start();
         <button name="action" value="change_status">Update Status</button>
     </form>
 
+    <!-- 6. Sort EOIs -->
+    <form method="post">
+        <label>Sort by:</label>
+        <select name="sort_field">
+            <option value="EOInumber">EOInumber</option>
+            <option value="JobReferenceNumber">Job Reference Number</option>
+            <option value="FirstName">First Name</option>
+            <option value="LastName">Last Name</option>
+            <option value="Status">Status</option>
+        </select>
+        <select name="sort_order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+        <button name="action" value="sort">Sort EOIs</button>
+    </form>
 <?php
 function displayEOIs($result) {
     if (mysqli_num_rows($result) > 0) {
@@ -148,9 +236,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'])) {
                 echo "<p style='color:red;'>Failed to update status.</p>";
             }
             break;
+        case "sort":
+            $allowed_fields = ['EOInumber', 'JobReferenceNumber', 'FirstName', 'LastName', 'Status'];
+            $allowed_orders = ['ASC', 'DESC'];
+
+            $field = in_array($_POST['sort_field'], $allowed_fields) ? $_POST['sort_field'] : 'EOInumber';
+            $order = in_array($_POST['sort_order'], $allowed_orders) ? $_POST['sort_order'] : 'ASC';
+
+            $query = "SELECT * FROM eoi ORDER BY $field $order";
+            $result = mysqli_query($conn, $query);
+            echo "<h2>EOIs Sorted by $field ($order)</h2>";
+            displayEOIs($result);
+            break;
     }
 }
 mysqli_close($conn);
+include("footer.inc");
 ?>
 
 </body>
