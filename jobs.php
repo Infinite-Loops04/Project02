@@ -1,5 +1,6 @@
 <?php
     require_once 'settings.php';
+    
     // Connect to the database
     $query = "SELECT * FROM jobs";
     $result = mysqli_query($conn, $query);
@@ -17,15 +18,8 @@
     </head>
     <body>
         <header id="header">
-              <?php include("header.inc"); ?>
-           <img id="logo" src="images/cloudspire_logo.png" alt="CloudSpire Logo">
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="apply.php">Services</a></li>
-                </ul>
-            </nav>
+            <?php include("header.inc"); ?>
+            <?php require_once 'enhancement.php'; ?>
         </header>
         <main id="welcome">
             <aside class="jobsimage">
@@ -114,6 +108,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "<li>Senior-level: " . $row['salary_senior'] . "</li>";
     echo "</ul>";
     echo "<a href='apply.php'>Apply Now</a>";
+    echo "<h4>Location: " . htmlspecialchars($row['location_1']) . "</h4>"; // Job Location
     echo "</section>";
     }
 }
@@ -226,11 +221,7 @@ $insert_job = "INSERT INTO jobs (
     'images/Itsecurity.png',
     '$70,000 - $85,000', '$80,000 - $120,000', '$120,000 - $160,000'
 )";
-if (mysqli_query($conn, $insert_job)) {
-    echo "Sample job data inserted successfully.<br>";
-} else {
-    echo "Error inserting sample data: " . mysqli_error($conn);
-}
+
 
 mysqli_close($conn);
     include 'footer.inc';
