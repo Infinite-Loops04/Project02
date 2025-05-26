@@ -1,4 +1,5 @@
 <!-- header.inc -->
+<header id="about_header">
     <img src="images/Screenshot_2025-04-08_214346.webp" id="logo" width="220" alt="CloudSpire Logo">
 <hr>
     <h1 id="page_title">CloudSpire Technologies</h1>

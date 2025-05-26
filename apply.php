@@ -11,16 +11,6 @@
     </head>
       <?php include("header.inc"); ?>
     <body id="apply_body">
-        <header id="apply_header">
-            <h1>CloudSpire Technologies</h1>
-            <nav id="apply_nav">
-                <ul>
-                    <li><a class="menu" href="index.php">Home</a></li>
-                    <li><a class="menu" href="jobs.php">Jobs</a></li>
-                    <li><a class="menu" href="about.php">About Us</a></li>
-                </ul>
-            </nav>
-        </header>
         <main id="form_body">
             <!--sending the entered information to the below address-->
             <form action="process_eoi.php" method="POST" novalidate>
@@ -125,14 +115,6 @@
             </form>
         </main>
         <hr>
-        <footer id="apply_footer">
-            <p id="copyright">&copy; 2023 CloudSpire Technologies. All rights reserved.</p>
-            <p id="follow_us">Follow us on:
-                <a href="https://www.facebook.com/cloudspiretech">Facebook</a> |
-                <a href="https://www.twitter.com/cloudspiretech">Twitter</a> |
-                <a href="https://www.linkedin.com/company/cloudspiretech">LinkedIn</a>
-            </p>
-        </footer>
-         <?php include("footer.inc"); ?>
+        <?php include("footer.inc"); ?>
     </body>
 </html>

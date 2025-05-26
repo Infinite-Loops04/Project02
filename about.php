@@ -7,21 +7,8 @@
   <title>Team behind Cloudspire Technologies</title>
   <link rel="stylesheet" type="text/css" href="styles/Project1.css">
 </head>
-  <?php include("header.inc"); ?>
+<?php include("header.inc"); ?>
 <body id="about_body">
-  <!-- Header section with navigation -->
-  <header id="about_header">
-    <img src="images/Screenshot_2025-04-08_214346.webp" id="logo" width="220" alt="CloudSpire Logo">
-    <hr>
-    <h1 id="page_title">CloudSpire Technologies</h1>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="apply.php">Services</a></li>
-            <li><a href="jobs.php">Jobs</a></li>
-        </ul>
-    </nav>
-</header>
   <!-- Introduction section with company description -->
   <section class="intro">
     <h1>We Are <span id="cloudspire">Cloudspire</span></h1> <!-- Heading with colored company name -->
@@ -145,10 +132,6 @@
     </section>
   </main>
   
-  <!-- Footer section with project link -->
-  <footer id="about_footer">
-    <p>View our project on <a href="https://your-jira-project-link.com" target="_blank">Jira</a></p> <!-- Footer text with external link (opens in new tab) -->
-  </footer>
-   <?php include("footer.inc"); ?>
+ <?php include("footer.inc"); ?>
 </body>
 </html>
