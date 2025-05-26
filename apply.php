@@ -9,14 +9,15 @@
         <link rel="stylesheet" type="text/css" href="styles/Project1.css">
         <title>CloudSpire Technologies | step towards your new life</title>
     </head>
+      <?php include("header.inc"); ?>
     <body id="apply_body">
         <header id="apply_header">
             <h1>CloudSpire Technologies</h1>
             <nav id="apply_nav">
                 <ul>
-                    <li><a class="menu" href="index.html">Home</a></li>
-                    <li><a class="menu" href="jobs.html">Jobs</a></li>
-                    <li><a class="menu" href="about.html">About Us</a></li>
+                    <li><a class="menu" href="index.php">Home</a></li>
+                    <li><a class="menu" href="jobs.php">Jobs</a></li>
+                    <li><a class="menu" href="about.php">About Us</a></li>
                 </ul>
             </nav>
         </header>
@@ -132,5 +133,6 @@
                 <a href="https://www.linkedin.com/company/cloudspiretech">LinkedIn</a>
             </p>
         </footer>
+         <?php include("footer.inc"); ?>
     </body>
 </html>
