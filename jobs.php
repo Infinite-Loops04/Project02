@@ -153,7 +153,7 @@ if (mysqli_num_rows($result) == 0) {
     }  
 } 
     mysqli_close($conn);
-    ?>
-    <?php include 'footer.inc'; ?>
+    include 'footer.inc';
+?>
 </body>
 </html>
