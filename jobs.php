@@ -155,22 +155,105 @@ $insert_job = "INSERT INTO jobs (
     'Cybersecurity Analyst',
     'Protects systems and networks from digital attacks and unauthorized access.',
     'Monitor network traffic for suspicious activity.',
-    'Respond to cyber threats in real time.',
-    'Develop and implement security policies.',
-    'Firewall Management',
-    'Incident Response',
-    'SIEM Tools',
-    'Penetration Testing',
-    'Encryption',
-    'Bachelor of Information Technology',
-    'Certified Ethical Hacker (CEH)',
-    'Hands-on Cyber Lab Experience',
-    'images/cybersecurity.png',
+    'Conduct vulnerability assessments and penetration testing.',
+    'Implement security measures to protect sensitive data.',
+    'Strong understanding of network protocols and security technologies.',
+    'Experience with security tools such as firewalls, intrusion detection systems, and antivirus software.',
+    'Knowledge of programming languages such as Python, Java, or C++',
+    'Excellent problem-solving and analytical skills',
+    'Strong communication and teamwork abilities',
+    'Bachelor's degree in Computer Science, Information Technology, or a related field',
+    '2+ years of experience in cybersecurity or a related field',
+    'Relevant certifications such as CISSP, CEH, or CompTIA Security+ are a plus',
+    'images/cybersecurity_analyst.png',
     '$60,000',
     '$75,000',
     '$90,000'
-)";
-
+);
+INSERT INTO jobs (
+    title, description,
+    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
+    skill_1, skill_2, skill_3, skill_4, skill_5,
+    education_1, education_2, education_3,
+    image, salary_entry, salary_mid, salary_senior
+) VALUES
+(
+    'Ethical Hacker',
+    'Ethical hackers, or penetration testers, are hired to hack into systems and networks to find vulnerabilities before malicious hackers do.',
+    'Perform penetration testing on systems and networks',
+    'Discover and document vulnerabilities',
+    'Provide recommendations for improving security posture',
+    'Stay up-to-date with hacking tools and techniques',
+    'Collaborate with IT teams to implement security measures',
+    'Proficiency in Python, Java, or C++',
+    'In-depth knowledge of hacking techniques and tools',
+    'Familiarity with security frameworks and protocols',
+    'Strong analytical and problem-solving skills',
+    'Excellent communication and teamwork abilities',
+    'Bachelor''s degree in Computer Science or IT',
+    '2+ years experience in ethical hacking',
+    'Certifications: CEH, OSCP, GPEN',
+    'images/ethicalhacker.png',
+    '$70,000 - $85,000',
+    '$80,000 - $120,000',
+    '$120,000 - $160,000'
+),
+INSERT INTO jobs (
+    title, description,
+    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
+    skill_1, skill_2, skill_3, skill_4, skill_5,
+    education_1, education_2, education_3,
+    image, salary_entry, salary_mid, salary_senior
+) VALUES
+(
+    'Computer Forensic Analyst',
+    'Investigates cybercrimes and recovers digital evidence from electronic devices.',
+    'Collect and analyze digital evidence',
+    'Preserve integrity of evidence',
+    'Investigate cybercrimes and incidents',
+    'Analyze evidence and report findings',
+    'Stay current with forensic tools and techniques',
+    'Understanding of computer systems and networks',
+    'Experience with tools like EnCase, FTK, Autopsy',
+    'Knowledge of data recovery and encryption',
+    'Analytical and problem-solving skills',
+    'Communication and teamwork',
+    'Bachelor''s degree in Computer Science or IT',
+    '2+ years in computer forensics',
+    'Certifications: CCE, CFCE, EnCE',
+    'images/computerforensicanalyst.png',
+    '$60,000 - $75,000',
+    '$70,000 - $100,000',
+    '$100,000 - $120,000'
+),
+INSERT INTO jobs (
+    title, description,
+    responsibilities_1, responsibilities_2, responsibilities_3, responsibilities_4, responsibilities_5,
+    skill_1, skill_2, skill_3, skill_4, skill_5,
+    education_1, education_2, education_3,
+    image, salary_entry, salary_mid, salary_senior
+) VALUES
+(
+    'IT Security Engineer',
+    'Designs and implements robust security systems to protect IT infrastructure.',
+    'Design and implement security systems',
+    'Monitor traffic for suspicious activity',
+    'Manage firewalls, IDS/IPS, VPNs',
+    'Conduct security audits and assessments',
+    'Collaborate with IT teams',
+    'Understanding of network protocols and systems',
+    'Experience with security tools',
+    'Knowledge of Python, Java, or C++',
+    'Proficiency in OS and networking',
+    'Strong communication and teamwork',
+    'Bachelor''s degree in Computer Science or IT',
+    '2+ years in IT security',
+    'Certifications: CISSP, CISM, CEH',
+    'images/itsecurity.png',
+    '$70,000 - $85,000',
+    '$80,000 - $120,000',
+    '$120,000 - $160,000'
+);
 if (mysqli_query($conn, $insert_job)) {
     echo "Sample job inserted successfully.";
 } else {
