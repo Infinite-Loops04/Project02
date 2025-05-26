@@ -17,9 +17,9 @@
         <title>CloudSpire Careers | pursue your dreams</title>
     </head>
     <body>
-        <header id="header"></header>
-        <?php include("header.inc");
-            include ("enhancement.php")?>
+        <header id="header">
+            <?php include("header.inc");?>
+        </header>
         <main id="welcome">
             <aside class="jobsimage">
                 <img src="images/careers.png" alt="CloudSpire Technologies">
@@ -131,7 +131,6 @@ $create_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
     salary_entry VARCHAR(50),
     salary_mid VARCHAR(50),
     salary_senior VARCHAR(50)
-    Location_1 VARCHAR(255),
 )";
 
 if (mysqli_query($conn, $create_table_jobs)) {
