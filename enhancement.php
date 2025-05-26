@@ -1,59 +1,62 @@
+<?php
+$sort_field = "eoi_id"; 
+
+$allowed_fields = ['eoi_id', 'job_reference', 'first_name', 'last_name', 'status', 'application_date'];
+
+if (isset($_GET['sort_by']) && in_array($_GET['sort_by'], $allowed_fields)) {
+    $sort_field = $_GET['sort_by'];
+}
+
+$sql = "SELECT * FROM eoi ORDER BY $sort_field";
+$result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Enhancements</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #004080;
-        }
-        .enhancement {
-            margin-bottom: 30px;
-        }
-    </style>
+    <title>Manage EOIs</title>
 </head>
 <body>
 
-    <h1>Project Enhancements</h1>
-    <p>This page describes the additional features implemented in this project that go beyond the specified requirements.</p>
+<h1>Manage EOIs</h1>
 
-    <div class="enhancement">
-        <h2>1. Sorting EOI Records</h2>
-        <p>
-            I added a dropdown menu on the <code>manage.php</code> page that allows the HR manager to sort EOI records
-            by different fields such as applicant name, job reference number, or application date.
-            This was implemented using a <code>SELECT</code> statement with an <code>ORDER BY</code> clause in PHP.
-        </p>
-    </div>
+<form method="get" action="manage.php">
+    <label for="sort_by">Sort EOIs by:</label>
+    <select name="sort_by" id="sort_by">
+        <option value="eoi_id">EOI ID</option>
+        <option value="job_reference">Job Reference</option>
+        <option value="first_name">First Name</option>
+        <option value="last_name">Last Name</option>
+        <option value="status">Status</option>
+        <option value="application_date">Application Date</option>
+    </select>
+    <input type="submit" value="Sort">
+</form>
 
-    <div class="enhancement">
-        <h2>2. Manager Registration Page</h2>
-        <p>
-            A new page <code>register_manager.php</code> was created to allow managers to register by providing a unique username and password.
-            The server-side script checks for uniqueness before inserting the manager into a managers table in the MySQL database.
-        </p>
-    </div>
+<?php
+if (mysqli_num_rows($result) > 0) {
+    echo "<table border='1'>";
+    echo "<tr><th>EOI ID</th><th>Job Reference</th><th>First Name</th><th>Last Name</th><th>Status</th><th>Application Date</th></tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>{$row['eoi_id']}</td>";
+        echo "<td>{$row['job_reference']}</td>";
+        echo "<td>{$row['first_name']}</td>";
+        echo "<td>{$row['last_name']}</td>";
+        echo "<td>{$row['status']}</td>";
+        echo "<td>{$row['application_date']}</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No EOI records found.";
+}
 
-    <div class="enhancement">
-        <h2>3. Access Control on manage.php</h2>
-        <p>
-            Access to <code>manage.php</code> is now restricted to logged-in users. Managers must log in using <code>login.php</code>, 
-            and a session is used to keep them logged in. Unauthorized users are redirected.
-        </p>
-    </div>
-
-    <div class="enhancement">
-        <h2>4. Account Lockout on Failed Logins</h2>
-        <p>
-            To improve security, I implemented a feature that disables login access for a manager after three invalid login attempts.
-            A timestamp is stored, and the account is locked for 10 minutes using session and database flags.
-        </p>
-    </div>
+mysqli_close($conn);
+?>
 
 </body>
 </html>
+
+
