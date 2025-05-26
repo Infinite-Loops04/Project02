@@ -35,7 +35,7 @@ session_start();
         <label>Job Reference Number:</label>
         <input type="text" name="jobRef">
         <button name="action" value="filter_job">Search by Job Ref</button>
-        <button name="action" value="delete_job" style="background:red; color:white;">Delete EOIs by Job Ref</button>
+        <button name="action" value="delete_job" style="background:purple; color:white;">Delete EOIs by Job Ref</button>
     </form>
 
     <!-- 3. Filter by Applicant Name -->
