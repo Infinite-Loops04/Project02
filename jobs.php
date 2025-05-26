@@ -115,9 +115,6 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</section>";
     }
 }
-mysqli_close($conn);
-?>
-<?php
 if (mysqli_num_rows($result) == 0) {
     $creat_table_jobs = "CREATE TABLE IF NOT EXISTS jobs (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -153,10 +150,10 @@ if (mysqli_num_rows($result) == 0) {
         echo "<p>Sample job data inserted successfully.</p>";
     } else {
         echo "<p>Error inserting sample job data: " . mysqli_error($conn) . "</p>";
-    }   
+    }  
+} 
     mysqli_close($conn);
-    include 'footer.inc'; 
-}
+    include 'footer.inc';
 ?>
 </body>
 </html>
