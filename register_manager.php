@@ -152,6 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($success) {
         echo "<p class='success'>$success</p>";
     }
+    echo '<button onclick="location.href=\'index.php\'">Back to Homepage</button>';
     ?>
 </form>
 

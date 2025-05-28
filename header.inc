@@ -10,6 +10,7 @@
             <li><a href="jobs.php">Jobs</a></li>
             <li><a href="manage.php">Queries</a></li>
             <li><a href="about.php">About Us</a></li>
+            <li><a href="enhancement.php">Enhancements</a></li>
         </ul>
     </nav>
 </header>
